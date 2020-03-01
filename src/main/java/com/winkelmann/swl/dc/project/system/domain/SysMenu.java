@@ -21,7 +21,7 @@ public class SysMenu extends BaseEntity
 	private static final long serialVersionUID = 1L;
 	
 	// 菜单ID
-	private long menuId;
+	private Long menuId;
 	// 菜单名称
 	private String menuName;
 	// 父菜单名称
@@ -47,11 +47,11 @@ public class SysMenu extends BaseEntity
 	// 子菜单
 	private List<SysMenu> children = new ArrayList<SysMenu>();
 	
-	public long getMenuId() {
+	public Long getMenuId() {
 		return menuId;
 	}
 	
-	public void setMenuId(long menuId) {
+	public void setMenuId(Long menuId) {
 		this.menuId = menuId;
 	}
 	

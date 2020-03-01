@@ -1,10 +1,10 @@
-package com.winkelmann.swl.datacenter;
+package com.winkelmann.swl.dc;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DatacenterApplicationTests {
+class ApplicationTests {
 
 	@Test
 	void contextLoads() {
