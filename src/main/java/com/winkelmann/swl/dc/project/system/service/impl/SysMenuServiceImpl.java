@@ -10,6 +10,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.winkelmann.swl.dc.common.constant.UserConstants;
 import com.winkelmann.swl.dc.common.utils.SecurityUtils;
@@ -28,9 +29,10 @@ import com.winkelmann.swl.dc.project.system.service.ISysMenuService;
  * @author JiangL
  *
  */
+@Service
 public class SysMenuServiceImpl implements ISysMenuService
 {
-	public static final String PREMISSION_STRING = "perms[\"{0}\"]";
+	public static final String PERMISSION_STRING = "perms[\"{0}\"]";
 
 	@Autowired
 	private SysMenuMapper menuMapper;

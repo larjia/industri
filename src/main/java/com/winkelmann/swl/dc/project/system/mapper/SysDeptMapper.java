@@ -21,7 +21,7 @@ public interface SysDeptMapper
 	/**
 	 * 根据角色Id查询部门树信息
 	 */
-	public List<SysDept> selectDeptListByRoleId(Long roleId);
+	public List<Integer> selectDeptListByRoleId(Long roleId);
 	
 	/**
 	 * 根据部门Id查询信息

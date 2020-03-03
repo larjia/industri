@@ -13,9 +13,29 @@ dc:
   # 获取ip地址开关
   addressEnabled: false
 
+# 开发环境配置
+server:
+  # 服务器的HTTP端口,默认为8080
+  port: 8080
+  servlet:
+    # 应用的访问路径
+    context-path: /
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # tomcat最大线程数,默认为200
+    max-threads: 800
+    # tomcat启动初始化的线程数,默认值25
+    min-spare-threads: 30
+
 # Spring配置
 spring:
   # 资源信息
+  messages:
+    # 国际化资源文件路径
+    basename: i18n/messages
+  profiles:
+    active: druid
   # redis配置
   redis:
     # 地址
@@ -49,7 +69,7 @@ token:
 # MyBatis配置
 mybatis:
   # 搜索指定包别名
-  typeAliasesPackage: com.winkelmann.swl.project.**.domain
+  typeAliasesPackage: com.winkelmann.swl.dc.project.**.domain
   # 配置mapper的扫描,找到所有的mapper.xml映射文件
   mapperLocations: classpath*:mybatis/**/*Mapper.xml
   # 加载全局的配置文件
