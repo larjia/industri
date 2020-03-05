@@ -20,7 +20,7 @@ public interface ISysUserService
 	// 根据用户Id查询用户所属角色组
 	public String selectUserRoleGroup(String userName);
 	// 根据用户Id查询用户所属岗位组
-	public String selectUserPostGroup(String userName);
+	public String selectUserPositionGroup(String userName);
 	// 校验用户名称是否唯一
 	public String checkUserNameUnique(String userName);
 	// 校验手机号码是否唯一

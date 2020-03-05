@@ -2,8 +2,11 @@ package com.winkelmann.swl.dc.framework.security.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
+
+import com.winkelmann.swl.dc.project.system.service.ISysUserService;
 
 /**
  * 用户验证处理
