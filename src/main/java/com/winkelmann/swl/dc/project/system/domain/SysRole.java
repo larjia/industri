@@ -39,6 +39,11 @@ public class SysRole extends BaseEntity
 	public SysRole()
 	{
 	}
+	
+	public SysRole(Long roleId)
+	{
+		this.roleId = roleId;
+	}
 
 	public Long getRoleId()
 	{
