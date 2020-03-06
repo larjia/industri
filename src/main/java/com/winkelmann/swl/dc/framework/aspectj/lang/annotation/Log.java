@@ -1,4 +1,4 @@
-package com.winkelmann.swl.dc.framework.aspectj.annotation;
+package com.winkelmann.swl.dc.framework.aspectj.lang.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -6,8 +6,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.winkelmann.swl.dc.framework.aspectj.enums.BusinessType;
-import com.winkelmann.swl.dc.framework.aspectj.enums.OperatorType;
+import com.winkelmann.swl.dc.framework.aspectj.lang.enums.BusinessType;
+import com.winkelmann.swl.dc.framework.aspectj.lang.enums.OperatorType;
 
 /**
  * 自定义操作日志记录注解

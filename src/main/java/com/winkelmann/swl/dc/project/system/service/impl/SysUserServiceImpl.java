@@ -13,6 +13,7 @@ import com.winkelmann.swl.dc.common.constant.UserConstants;
 import com.winkelmann.swl.dc.common.exception.CustomException;
 import com.winkelmann.swl.dc.common.utils.SecurityUtils;
 import com.winkelmann.swl.dc.common.utils.StringUtils;
+import com.winkelmann.swl.dc.framework.aspectj.lang.annotation.DataScope;
 import com.winkelmann.swl.dc.project.system.domain.SysPosition;
 import com.winkelmann.swl.dc.project.system.domain.SysRole;
 import com.winkelmann.swl.dc.project.system.domain.SysUser;

@@ -1,4 +1,4 @@
-package com.winkelmann.swl.dc.framework.aspectj.enums;
+package com.winkelmann.swl.dc.framework.aspectj.lang.enums;
 
 /**
  * 操作人类别

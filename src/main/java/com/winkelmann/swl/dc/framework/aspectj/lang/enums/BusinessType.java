@@ -1,4 +1,4 @@
-package com.winkelmann.swl.dc.framework.aspectj.enums;
+package com.winkelmann.swl.dc.framework.aspectj.lang.enums;
 
 /**
  * 业务操作类型
