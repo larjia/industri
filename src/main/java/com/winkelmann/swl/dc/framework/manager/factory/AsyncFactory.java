@@ -30,7 +30,7 @@ public class AsyncFactory
 	/**
 	 * 记录登录信息
 	 */
-	public static TimerTask recordLoginfor(final String username, final String status, final String message, final Object... args)
+	public static TimerTask recordLoginInfo(final String username, final String status, final String message, final Object... args)
 	{
 		final UserAgent userAgent = UserAgent.parseUserAgentString(ServletUtils.getRequest().getHeader("User-Agent"));
 		final String ip = IpUtils.getIpAddr(ServletUtils.getRequest());
