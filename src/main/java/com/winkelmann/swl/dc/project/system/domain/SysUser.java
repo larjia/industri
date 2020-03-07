@@ -47,7 +47,7 @@ public class SysUser extends BaseEntity
 	// 删除标识 0存在 2删除
 	private String delFlag;
 	// 最后登录IP
-	private String loginIP;
+	private String loginIp;
 	// 最后登录时间
 	private Date loginDate;
 	// 部门对象
@@ -195,14 +195,14 @@ public class SysUser extends BaseEntity
 		this.delFlag = delFlag;
 	}
 
-	public String getLoginIP()
+	public String getLoginIp()
 	{
-		return loginIP;
+		return loginIp;
 	}
 
-	public void setLoginIP(String loginIP)
+	public void setLoginIp(String loginIp)
 	{
-		this.loginIP = loginIP;
+		this.loginIp = loginIp;
 	}
 
 	public Date getLoginDate()
@@ -280,7 +280,7 @@ public class SysUser extends BaseEntity
 				.append("password", getPassword())
 				.append("salt", getSalt())
 				.append("delFlag", getDelFlag())
-				.append("loginIP", getLoginIP())
+				.append("loginIP", getLoginIp())
 				.append("loginDate", getLoginDate())
 				.append("createBy", getCreateBy())
 				.append("createTime", getCreateTime())
