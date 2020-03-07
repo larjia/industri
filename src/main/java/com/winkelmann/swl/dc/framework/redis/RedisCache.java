@@ -53,7 +53,7 @@ public class RedisCache
 	 * @param timeUnit 时间颗粒度
 	 * @return 缓存的对象
 	 */
-	public <T> ValueOperations<String, T> setCacheObjects(String key, T value, Integer timeout, TimeUnit timeUnit)
+	public <T> ValueOperations<String, T> setCacheObject(String key, T value, Integer timeout, TimeUnit timeUnit)
 	{
 		ValueOperations operations = redisTemplate.opsForValue();
 		operations.set(key, value, timeout, timeUnit);
