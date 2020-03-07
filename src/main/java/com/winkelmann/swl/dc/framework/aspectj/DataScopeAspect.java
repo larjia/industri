@@ -56,7 +56,7 @@ public class DataScopeAspect
 	
 	// 配置织入点
 	@Pointcut("@annotation(com.winkelmann.swl.dc.framework.aspectj.lang.annotation.DataScope)")
-	public void dataScopePointcut()
+	public void dataScopePointCut()
 	{
 	}
 	
