@@ -23,7 +23,7 @@ public class SysDept extends BaseEntity
 	// 部门名称
 	private String deptName;
 	// 显示顺序
-	private String oderNum;
+	private String orderNum;
 	// 负责人
 	private String leader;
 	// 联系电话
@@ -71,12 +71,12 @@ public class SysDept extends BaseEntity
 		this.deptName = deptName;
 	}
 	
-	public String getOderNum() {
-		return oderNum;
+	public String getOrderNum() {
+		return orderNum;
 	}
 	
-	public void setOderNum(String oderNum) {
-		this.oderNum = oderNum;
+	public void setOrderNum(String orderNum) {
+		this.orderNum = orderNum;
 	}
 	
 	public String getLeader() {
