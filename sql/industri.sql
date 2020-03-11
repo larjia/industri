@@ -177,7 +177,8 @@ insert into sys_menu values('112',  '服务监控', '2',   '4', 'server',     'm
 insert into sys_menu values('113',  '表单构建', '3',   '1', 'build',      'tool/build/index',         1 ,'C', '0', 'tool:build:list',         'build',         'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '表单构建菜单');
 insert into sys_menu values('114',  '代码生成', '3',   '2', 'gen',        'tool/gen/index',           1, 'C', '0', 'tool:gen:list',           'code',          'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '代码生成菜单');
 insert into sys_menu values('115',  '系统接口', '3',   '3', 'swagger',    'tool/swagger/index',       1, 'C', '0', 'tool:swagger:list',       'swagger',       'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '系统接口菜单');
-insert into sys_menu values('116',  '质量PPM', '4',   '1', 'opppm',    'production/opppm/index',      1, 'C', '0', 'production:opppm:list',   'opppm',        'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '质量PPM菜单');
+
+insert into sys_menu values('116',  '生产PPM', '4',   '1', 'prodppm',    'production/prodppm/index',  1, 'C', '0', 'production:prodppm:list',   'prodppm',        'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '生产PPM菜单');
 -- 三级菜单
 insert into sys_menu values('500',  '操作日志', '108', '1', 'operlog',    'monitor/operlog/index',    1, 'C', '0', 'monitor:operlog:list',    'form',          'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '操作日志菜单');
 insert into sys_menu values('501',  '登录日志', '108', '2', 'logininfor', 'monitor/logininfor/index', 1, 'C', '0', 'monitor:logininfor:list', 'logininfor',    'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '登录日志菜单');
@@ -693,3 +694,10 @@ create table prod_shop_floor_group (
   update_time       datetime                                   comment '更新时间',
   primary key (group_id)
 ) engine=innodb auto_increment=200 comment = '班组表';
+
+-- ----------------------------
+-- 初始化 生产车间班组表
+-- ----------------------------
+insert into prod_shop_floor_group values (100,  110, '钎焊班', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_shop_floor_group values (101,  110, '检验班', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_shop_floor_group values (102,  110, '包装入库班', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');

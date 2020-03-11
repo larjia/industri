@@ -2,6 +2,8 @@ package com.winkelmann.swl.dc.project.production.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.winkelmann.swl.dc.project.production.domain.ProdShopFloorGroup;
 
 /**
@@ -17,6 +19,8 @@ public interface ProdShopFloorGroupMapper
 	public ProdShopFloorGroup selectShopFloorGroupById(Long shopFloorGroupId);
 	// 根据名称查询班组
 	public List<ProdShopFloorGroup> selectShopFloorGroupByName(String shopFloorGroupName);
+	// 校验班组名称是否唯一
+	public ProdShopFloorGroup checkGroupNameUnique(@Param("groupName") String groupName, @Param("deptId") Long deptId);
 	// 新增班组
 	public int insertShopFloorGroup(ProdShopFloorGroup shopFloorGroup);
 	// 修改班组

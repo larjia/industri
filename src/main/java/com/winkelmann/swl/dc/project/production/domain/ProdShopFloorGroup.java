@@ -1,16 +1,18 @@
 package com.winkelmann.swl.dc.project.production.domain;
 
+import com.winkelmann.swl.dc.framework.web.domain.BaseEntity;
+
 /*
  * 生产车间班组 比如钎焊班 检验班 包装入库班
  */
-public class ProdShopFloorGroup
+public class ProdShopFloorGroup extends BaseEntity
 {
 	private static final long serialVersionUID = 1L;
 	
 	// 班组Id
 	private Long groupId;
 	// 班组名称
-	private Long groupName;
+	private String groupName;
 	// 部门Id
 	private Long deptId;
 	
@@ -28,12 +30,12 @@ public class ProdShopFloorGroup
 		this.groupId = groupId;
 	}
 
-	public Long getShopFloorGroupName()
+	public String getShopFloorGroupName()
 	{
 		return groupName;
 	}
 
-	public void setShopFloorGroupName(Long groupName)
+	public void setShopFloorGroupName(String groupName)
 	{
 		this.groupName = groupName;
 	}

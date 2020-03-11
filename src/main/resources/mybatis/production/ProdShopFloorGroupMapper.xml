@@ -2,9 +2,62 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.winkelmann.swl.dc.project.production.mapper.ProdShopFloorGroupMapper">
 
-	<resultMap type="ProdShopFloorGroup" 	id="ProdShopFloorGroupReslt">
+	<resultMap type="ProdShopFloorGroup" 	id="ProdShopFloorGroupResult">
 		<id		property="groupId"			column="group_id"		/>
 		<result	property="groupName"		column="group_name"		/>
 		<result property="deptId"			column="dept_id"		/>
 	</resultMap>
+	
+	<sql id="selectShopFloorGroupVo">
+		select sfg.group_id, sfg.group_name, sfg.dept_id
+		from prod_shop_floor_group sfg
+	</sql>
+	
+	<select id="selectShopFloorGroupList" resultMap="ProdShopFloorGroupResult">
+		<include refid="selectShopFloorGroupVo"/>
+	</select>
+	
+	<select id="selectShopFloorGroupById" parameterType="Long" resultMap="ProdShopFloorGroupResult">
+		<include refid="selectShopFloorGroupVo"/>
+		where group_id = #{shopFloorGroupId}
+	</select>
+	
+	<select id="selectShopFloorGroupByName" parameterType="String" resultMap="ProdShopFloorGroupResult">
+		<include refid="selectShopFloorGroupVo"/>
+		where group_name like concat('%', #{shopFloorGroupName}, '%')
+	</select>
+	
+	<select id="checkGroupNameUnique" resultMap="ProdShopFloorGroupResult">
+		<include refid="selectShopFloorGroupVo"/>
+		where group_name = #{groupName} and dept_id = #{deptId}
+	</select>
+	
+	<insert id="insertShopFloorGroup" parameterType="ProdShopFloorGroup" useGeneratedKeys="true" keyProperty="groupId">
+		insert into prod_shop_floor_group (
+			<if test="groupId != null and groupId != 0">group_id,</if>
+			<if test="groupName != null and groupName != ''">group_name,</if>
+			<if test="deptId != null and deptId != 0">dept_id,</if>
+			create_time
+		) values (
+			<if test="groupId != null and groupId != ''">#{groupId},</if>
+			<if test="groupName != null and groupName != ''">#{groupName},</if>
+			<if test="deptId != null and deptId != ''">#{deptId},</if>
+			sysdate()
+		)
+	</insert>
+	
+	<update id="updateShopFloorGroup" parameterType="ProdShopFloorGroup">
+		update prod_shop_floor_group
+		<set>
+			<if test="groupId != null and groupId != 0">group_id = #{groupId},</if>
+			<if test="groupName != null and groupName != ''">group_name = #{groupName},</if>
+			<if test="deptId != null and deptId != 0">dept_id = #{deptId},</if>
+			update_time = sysdate()
+		</set>
+		where group_id = #{groupId}
+	</update>
+	
+	<delete id="deleteShopFloorGroupById" parameterType="Long">
+ 		delete from prod_shop_floor_group where group_id = #{shopFloorGroupId}
+ 	</delete>
 </mapper>

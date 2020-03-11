@@ -17,6 +17,8 @@ public interface IProdShopFloorGroupService
 	public ProdShopFloorGroup selectShopFloorGroupById(Long shopFloorGroupId);
 	// 根据名称查询班组
 	public List<ProdShopFloorGroup> selectShopFloorGroupByName(String shopFloorGroupName);
+	// // 校验班组名称是否唯一
+	public String checkShopFloorGroupNameUnique(ProdShopFloorGroup group);
 	// 新增班组
 	public int insertShopFloorGroup(ProdShopFloorGroup shopFloorGroup);
 	// 修改班组
