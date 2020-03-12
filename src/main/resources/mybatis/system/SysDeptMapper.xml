@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="ancestors"	column="ancestors"	/>
 		<result property="deptName"		column="dept_name"	/>
 		<result property="orderNum"		column="order_num"	/>
-		<result property="leaer"		column="leader"		/>
+		<result property="leader"		column="leader"		/>
 		<result property="phone"		column="phone"		/>
 		<result property="email"		column="email"		/>
 		<result property="status"		column="status"		/>
