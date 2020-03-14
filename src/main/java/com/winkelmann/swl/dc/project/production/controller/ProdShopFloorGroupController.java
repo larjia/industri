@@ -19,6 +19,7 @@ import com.winkelmann.swl.dc.framework.aspectj.lang.annotation.Log;
 import com.winkelmann.swl.dc.framework.aspectj.lang.enums.BusinessType;
 import com.winkelmann.swl.dc.framework.web.controller.BaseController;
 import com.winkelmann.swl.dc.framework.web.domain.AjaxResult;
+import com.winkelmann.swl.dc.framework.web.page.TableDataInfo;
 import com.winkelmann.swl.dc.project.production.domain.ProdShopFloorGroup;
 import com.winkelmann.swl.dc.project.production.service.IProdShopFloorGroupService;
 
@@ -38,10 +39,16 @@ public class ProdShopFloorGroupController extends BaseController
 	 * 获取班组列表
 	 */
 	@GetMapping("/list")
-	public AjaxResult list()
+//	public AjaxResult list()
+//	{
+//		List<ProdShopFloorGroup> groups = shopFloorGroupService.selectShopFloorGroupList();
+//		return AjaxResult.success(groups);
+//	}
+	public TableDataInfo List(ProdShopFloorGroup group)
 	{
-		List<ProdShopFloorGroup> groups = shopFloorGroupService.selectShopFloorGroupList();
-		return AjaxResult.success(groups);
+		startPage();
+		List<ProdShopFloorGroup> list = shopFloorGroupService.selectShopFloorGroupList(group);
+		return getDataTable(list);
 	}
 	
 	/**
@@ -71,7 +78,7 @@ public class ProdShopFloorGroupController extends BaseController
 	{
 		if (UserConstants.NOT_UNIQUE.equals(shopFloorGroupService.checkShopFloorGroupNameUnique(group)))
 		{
-			return AjaxResult.error("新增班组'" + group.getShopFloorGroupName() + "'失败, 班组名称已存在.");
+			return AjaxResult.error("新增班组'" + group.getGroupName() + "'失败, 班组名称已存在.");
 		}
 		group.setCreateBy(SecurityUtils.getUserName());
 		return toAjax(shopFloorGroupService.insertShopFloorGroup(group));
@@ -86,7 +93,7 @@ public class ProdShopFloorGroupController extends BaseController
 	{
 		if (UserConstants.NOT_UNIQUE.equals(shopFloorGroupService.checkShopFloorGroupNameUnique(group)))
 		{
-			return AjaxResult.error("修改部门'" + group.getShopFloorGroupName() + "'失败, 部门名称已存在.");
+			return AjaxResult.error("修改部门'" + group.getGroupName() + "'失败, 部门名称已存在.");
 		}
 		// TODO 增加班组所属部门是否为车间部门的校验.班组所属部门需为车间部门
 		group.setUpdateBy(SecurityUtils.getUserName());

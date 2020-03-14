@@ -24,9 +24,9 @@ public class ProdShopFloorGroupService implements IProdShopFloorGroupService
 
 	// 查询车间班组数据
 	@Override
-	public List<ProdShopFloorGroup> selectShopFloorGroupList()
+	public List<ProdShopFloorGroup> selectShopFloorGroupList(ProdShopFloorGroup group)
 	{
-		return shopFloorGroupMapper.selectShopFloorGroupList();
+		return shopFloorGroupMapper.selectShopFloorGroupList(group);
 	}
 
 	// 根据班组Id查询班组
@@ -68,8 +68,8 @@ public class ProdShopFloorGroupService implements IProdShopFloorGroupService
 	@Override
 	public String checkShopFloorGroupNameUnique(ProdShopFloorGroup group)
 	{
-		Long groupId = StringUtils.isNull(group.getShopFloorGroupId()) ? -1L : group.getShopFloorGroupId();
-		ProdShopFloorGroup info = shopFloorGroupMapper.checkGroupNameUnique(group.getShopFloorGroupName(), group.getShopFloorGroupId());
+		Long groupId = StringUtils.isNull(group.getGroupId()) ? -1L : group.getGroupId();
+		ProdShopFloorGroup info = shopFloorGroupMapper.checkGroupNameUnique(group.getGroupName(), group.getGroupId());
 		if (StringUtils.isNotNull(info) && info.getDeptId().longValue() != groupId.longValue())
 		{
 			return UserConstants.NOT_UNIQUE;

@@ -1,6 +1,7 @@
 package com.winkelmann.swl.dc.project.production.domain;
 
 import com.winkelmann.swl.dc.framework.web.domain.BaseEntity;
+import com.winkelmann.swl.dc.project.system.domain.SysDept;
 
 /*
  * 生产车间班组 比如钎焊班 检验班 包装入库班
@@ -15,27 +16,29 @@ public class ProdShopFloorGroup extends BaseEntity
 	private String groupName;
 	// 部门Id
 	private Long deptId;
+	// 部门对象
+	private SysDept dept;
 	
 	public ProdShopFloorGroup()
 	{
 	}
 
-	public Long getShopFloorGroupId()
+	public Long getGroupId()
 	{
 		return groupId;
 	}
 
-	public void setShopFloorGroupId(Long groupId)
+	public void setGroupId(Long groupId)
 	{
 		this.groupId = groupId;
 	}
 
-	public String getShopFloorGroupName()
+	public String getGroupName()
 	{
 		return groupName;
 	}
 
-	public void setShopFloorGroupName(String groupName)
+	public void setGroupName(String groupName)
 	{
 		this.groupName = groupName;
 	}
@@ -49,4 +52,15 @@ public class ProdShopFloorGroup extends BaseEntity
 	{
 		this.deptId = deptId;
 	}
+
+	public SysDept getDept()
+	{
+		return dept;
+	}
+
+	public void setDept(SysDept dept)
+	{
+		this.dept = dept;
+	}
+	
 }

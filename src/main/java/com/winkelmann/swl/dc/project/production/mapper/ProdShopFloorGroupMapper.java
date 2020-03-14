@@ -14,7 +14,7 @@ import com.winkelmann.swl.dc.project.production.domain.ProdShopFloorGroup;
 public interface ProdShopFloorGroupMapper
 {
 	// 查询所有班组数据
-	public List<ProdShopFloorGroup> selectShopFloorGroupList();
+	public List<ProdShopFloorGroup> selectShopFloorGroupList(ProdShopFloorGroup group);
 	// 根据Id查询班组
 	public ProdShopFloorGroup selectShopFloorGroupById(Long shopFloorGroupId);
 	// 根据名称查询班组

@@ -6,15 +6,30 @@
 		<id		property="groupId"			column="group_id"		/>
 		<result	property="groupName"		column="group_name"		/>
 		<result property="deptId"			column="dept_id"		/>
+		<association property="dept"		column="dept_id"	javaType="SysDept" resultMap="deptResult" />
+	</resultMap>
+	
+	<resultMap id="deptResult" type="SysDept">
+		<id 	property="deptId"		column="dept_id"	/>
+		<result property="deptName"		column="dept_name"	/>
 	</resultMap>
 	
 	<sql id="selectShopFloorGroupVo">
-		select sfg.group_id, sfg.group_name, sfg.dept_id
+		select sfg.group_id, sfg.group_name, sfg.dept_id, d.dept_id, d.dept_name
 		from prod_shop_floor_group sfg
+			left join sys_dept d on sfg.dept_id = d.dept_id
 	</sql>
 	
-	<select id="selectShopFloorGroupList" resultMap="ProdShopFloorGroupResult">
+	<select id="selectShopFloorGroupList" parameterType="ProdShopFloorGroup" resultMap="ProdShopFloorGroupResult">
 		<include refid="selectShopFloorGroupVo"/>
+		<where>
+			<if test="groupName != null and groupName != ''">
+				AND sfg.group_name like concat('%', #{groupName}, '%')
+			</if>
+			<if test="deptId != null">
+				AND sfg.dept_id = #{deptId}
+			</if>
+		</where>
 	</select>
 	
 	<select id="selectShopFloorGroupById" parameterType="Long" resultMap="ProdShopFloorGroupResult">

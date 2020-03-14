@@ -24,19 +24,23 @@ create table sys_dept (
 -- ----------------------------
 -- 初始化-部门表数据
 -- ----------------------------
-insert into sys_dept values(100,  0,   '0',          'SWL',   0, '若依', '15888888888', 'ry@qq.com', '0', '0', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
-insert into sys_dept values(101,  100, '0,100',      '深圳总公司', 1, '若依', '15888888888', 'ry@qq.com', '0', '0', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
-insert into sys_dept values(102,  100, '0,100',      '长沙分公司', 2, '若依', '15888888888', 'ry@qq.com', '0', '0', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
-insert into sys_dept values(103,  101, '0,100,101',  '研发部门',   1, '若依', '15888888888', 'ry@qq.com', '0', '0', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
-insert into sys_dept values(104,  101, '0,100,101',  '市场部门',   2, '若依', '15888888888', 'ry@qq.com', '0', '0', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
-insert into sys_dept values(105,  101, '0,100,101',  '测试部门',   3, '若依', '15888888888', 'ry@qq.com', '0', '0', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
-insert into sys_dept values(106,  101, '0,100,101',  '财务部门',   4, '若依', '15888888888', 'ry@qq.com', '0', '0', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
-insert into sys_dept values(107,  101, '0,100,101',  '运维部门',   5, '若依', '15888888888', 'ry@qq.com', '0', '0', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
-insert into sys_dept values(108,  102, '0,100,102',  '市场部门',   1, '若依', '15888888888', 'ry@qq.com', '0', '0', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
-insert into sys_dept values(109,  102, '0,100,102',  '财务部门',   2, '若依', '15888888888', 'ry@qq.com', '0', '0', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
-insert into sys_dept values(110,  100, '0,100',      '高压车间',   1, '若依', '15888888888', 'ry@qq.com', '0', '0', '1', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
-insert into sys_dept values(111,  100, '0,100',      '低压车间',   2, '若依', '15888888888', 'ry@qq.com', '0', '0', '1', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
-insert into sys_dept values(112,  100, '0,100',      '五金车间',   3, '若依', '15888888888', 'ry@qq.com', '0', '0', '1', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
+-- insert into sys_dept values(100,  0,   '0',          'SWL',   0, '若依', '15888888888', 'ry@qq.com', '0', '0', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
+-- insert into sys_dept values(101,  100, '0,100',      '深圳总公司', 1, '若依', '15888888888', 'ry@qq.com', '0', '0', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
+-- insert into sys_dept values(102,  100, '0,100',      '长沙分公司', 2, '若依', '15888888888', 'ry@qq.com', '0', '0', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
+-- insert into sys_dept values(103,  101, '0,100,101',  '研发部门',   1, '若依', '15888888888', 'ry@qq.com', '0', '0', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
+-- insert into sys_dept values(104,  101, '0,100,101',  '市场部门',   2, '若依', '15888888888', 'ry@qq.com', '0', '0', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
+-- insert into sys_dept values(105,  101, '0,100,101',  '测试部门',   3, '若依', '15888888888', 'ry@qq.com', '0', '0', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
+-- insert into sys_dept values(106,  101, '0,100,101',  '财务部门',   4, '若依', '15888888888', 'ry@qq.com', '0', '0', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
+-- insert into sys_dept values(107,  101, '0,100,101',  '运维部门',   5, '若依', '15888888888', 'ry@qq.com', '0', '0', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
+-- insert into sys_dept values(108,  102, '0,100,102',  '市场部门',   1, '若依', '15888888888', 'ry@qq.com', '0', '0', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
+-- insert into sys_dept values(109,  102, '0,100,102',  '财务部门',   2, '若依', '15888888888', 'ry@qq.com', '0', '0', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
+-- insert into sys_dept values(110,  100, '0,100',      '高压车间',   1, '若依', '15888888888', 'ry@qq.com', '0', '0', '1', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
+-- insert into sys_dept values(111,  100, '0,100',      '低压车间',   2, '若依', '15888888888', 'ry@qq.com', '0', '0', '1', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
+-- insert into sys_dept values(112,  100, '0,100',      '五金车间',   3, '若依', '15888888888', 'ry@qq.com', '0', '0', '1', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
+insert into sys_dept values(100,  0,   '0',          'SWL',   0, 'admin', '15888888888', 'ry@qq.com', '0', '0', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
+insert into sys_dept values(101,  100, '0,100',      '高压车间', 1, 'admin', '15888888888', 'ry@qq.com', '0', '0', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
+insert into sys_dept values(102,  100, '0,100',      '低压车间', 2, 'admin', '15888888888', 'ry@qq.com', '0', '0', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
+insert into sys_dept values(103,  100, '0,100',      '五金车间', 3, 'admin', '15888888888', 'ry@qq.com', '0', '0', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00');
 
 -- ----------------------------
 -- 2、用户信息表
@@ -178,10 +182,13 @@ insert into sys_menu values('113',  '表单构建', '3',   '1', 'build',      't
 insert into sys_menu values('114',  '代码生成', '3',   '2', 'gen',        'tool/gen/index',           1, 'C', '0', 'tool:gen:list',           'code',          'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '代码生成菜单');
 insert into sys_menu values('115',  '系统接口', '3',   '3', 'swagger',    'tool/swagger/index',       1, 'C', '0', 'tool:swagger:list',       'swagger',       'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '系统接口菜单');
 
-insert into sys_menu values('116',  '生产PPM', '4',   '1', 'prodppm',    'production/prodppm/index',  1, 'C', '0', 'production:prodppm:list',   'prodppm',        'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '生产PPM菜单');
+insert into sys_menu values('116',  '生产PPM', '4',   '1', 'prodppm',    'production/prodppm/index',  1, 'C', '0', 'production:prodppm:list','prodppm',        'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '生产PPM菜单');
+insert into sys_menu values('117',  '质量', '4',      '2', 'quality',    null,                        1, 'M', '0', '',                       'quality',        'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '生产质量菜单');
+insert into sys_menu values('118',  '车间', '4',      '3', 'shopfloor',  'production/shopfloor/index',1, 'M', '0', '',                       'shopfloor',      'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '生产车间菜单');
 -- 三级菜单
-insert into sys_menu values('500',  '操作日志', '108', '1', 'operlog',    'monitor/operlog/index',    1, 'C', '0', 'monitor:operlog:list',    'form',          'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '操作日志菜单');
-insert into sys_menu values('501',  '登录日志', '108', '2', 'logininfor', 'monitor/logininfor/index', 1, 'C', '0', 'monitor:logininfor:list', 'logininfor',    'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '登录日志菜单');
+insert into sys_menu values('500',  '操作日志', '108', '1', 'operlog',    'monitor/operlog/index',            1, 'C', '0', 'monitor:operlog:list',    'form',          'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '操作日志菜单');
+insert into sys_menu values('501',  '登录日志', '108', '2', 'logininfor', 'monitor/logininfor/index',         1, 'C', '0', 'monitor:logininfor:list', 'logininfor',    'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '登录日志菜单');
+insert into sys_menu values('502',  '车间班组', '118', '1', 'group',      'production/shopfloor/group/index', 1, 'C', '0', '',                        'logininfor',    'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '车间班组菜单');
 -- 用户管理按钮
 insert into sys_menu values('1001', '用户查询', '100', '1',  '', '', 1, 'F', '0', 'system:user:query',          '#', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '');
 insert into sys_menu values('1002', '用户新增', '100', '2',  '', '', 1, 'F', '0', 'system:user:add',            '#', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '');
@@ -386,7 +393,8 @@ create table sys_role_dept (
 -- ----------------------------
 insert into sys_role_dept values ('2', '100');
 insert into sys_role_dept values ('2', '101');
-insert into sys_role_dept values ('2', '105');
+-- insert into sys_role_dept values ('2', '105');
+insert into sys_role_dept values ('2', '103');
 
 
 -- ----------------------------
@@ -698,6 +706,6 @@ create table prod_shop_floor_group (
 -- ----------------------------
 -- 初始化 生产车间班组表
 -- ----------------------------
-insert into prod_shop_floor_group values (100,  110, '钎焊班', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
-insert into prod_shop_floor_group values (101,  110, '检验班', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
-insert into prod_shop_floor_group values (102,  110, '包装入库班', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_shop_floor_group values (100,  101, '钎焊班', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_shop_floor_group values (101,  101, '检验班', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_shop_floor_group values (102,  101, '包装入库班', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
