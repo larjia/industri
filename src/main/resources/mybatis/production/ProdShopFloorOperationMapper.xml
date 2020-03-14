@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.winkelmann.swl.dc.project.production.mapper.ProdShopFloorOperationMapper">
+
+	<resultMap type="ProdShopFloorOperation" id="ProdShopFloorOperationResult">
+		<id				property="operationId"		column="operation_id"		/>
+		<result 		property="operationName"	column="operation_name"		/>
+		<association 	property="group"			column="group_id"	javaType="ProdShopFloorGroup"	resultMap="groupResult" />
+	</resultMap>
+	
+	<resultMap id="groupResult" type="ProdShopFloorGroup">
+		<id		property="groupId"		column="group_id" 		/>
+		<result property="groupName"	column="group_name" 	/>
+	</resultMap>
+	
+	<sql id="selectOperationVo">
+		select sfo.operation_id, sfo.operation_name, sfo.group_id, sfg.group_id, sfg.group_name
+		from prod_shop_floor_operation sfo
+			left join prod_shop_floor_group sfg on sfo.group_id = sfg.group_id
+	</sql>
+	
+	<select id="selectOperationList" parameterType="ProdShopFloorOperation" resultMap="ProdShopFloorOperationResult">
+		<include refid="selectOperationVo" />
+		<where>
+			<if test="opName != null and opName != ''">
+				AND sfo.operation_name like concat('%', #{opName}, '%')
+			</if>
+			<if test="groupId != null">
+				AND sfo.group_id = #{groupId}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectOperationById" parameterType="Long" resultMap="ProdShopFloorOperationResult">
+		<include refid="selectOperationVo" />
+		where sfo.operation_id = #{opId}
+	</select>
+	
+	<select id="checkOperationNameUnique" resultMap="ProdShopFloorOperationResult">
+		<include refid="selectOperationVo" />
+		where sfo.operation_name = #{opName} and sfo.group_id = #{groupId}
+	</select>
+	
+	<insert id="insertOperation" parameterType="ProdShopFloorOperation" useGeneratedKeys="true" keyProperty="operationId">
+		insert into prod_shop_floor_operation (
+			<if test="operationId != null and operationId != 0">operation_id,</if>
+			<if test="operationName != null and operationName != ''">operation_name,</if>
+			<if test="groupId != null and groupId != 0">group_id,</if>
+			<if test="createBy != null and createBy != ''">create_by,</if>
+			create_time
+		) values (
+			<if test="operationId != null and operationId != ''">#{operationId},</if>
+			<if test="operationName != null and operationName != ''">#{operationName},</if>
+			<if test="groupId != null and groupId != ''">#{groupId},</if>
+			<if test="createBy != null and createBy != ''">#{createBy},</if>
+			sysdate()
+		)
+	</insert>
+	
+	<update id="updateOperation" parameterType="ProdShopFloorOperation">
+		update prod_shop_floor_operation
+		<set>
+			<if test="operationId != null and operationId != 0">operation_id = #{operationId},</if>
+			<if test="operationName != null and operationName != ''">operation_name = #{operationName},</if>
+			<if test="groupId != null and groupId != 0">group_id = #{groupId},</if>
+			<if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			update_time = sysdate()
+		</set>
+		where operation_id = #{operationId}
+	</update>
+	
+	<delete id="deleteOperationById" parameterType="Long">
+		delete from prod_shop_floor_operation where operation_id = #{operationId}
+	</delete>
+</mapper>
