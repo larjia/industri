@@ -34,17 +34,12 @@
 	
 	<select id="selectShopFloorGroupById" parameterType="Long" resultMap="ProdShopFloorGroupResult">
 		<include refid="selectShopFloorGroupVo"/>
-		where group_id = #{shopFloorGroupId}
-	</select>
-	
-	<select id="selectShopFloorGroupByName" parameterType="String" resultMap="ProdShopFloorGroupResult">
-		<include refid="selectShopFloorGroupVo"/>
-		where group_name like concat('%', #{shopFloorGroupName}, '%')
+		where sfg.group_id = #{groupId}
 	</select>
 	
 	<select id="checkGroupNameUnique" resultMap="ProdShopFloorGroupResult">
 		<include refid="selectShopFloorGroupVo"/>
-		where group_name = #{groupName} and dept_id = #{deptId}
+		where sfg.group_name = #{groupName} and sfg.dept_id = #{deptId}
 	</select>
 	
 	<insert id="insertShopFloorGroup" parameterType="ProdShopFloorGroup" useGeneratedKeys="true" keyProperty="groupId">
@@ -52,11 +47,13 @@
 			<if test="groupId != null and groupId != 0">group_id,</if>
 			<if test="groupName != null and groupName != ''">group_name,</if>
 			<if test="deptId != null and deptId != 0">dept_id,</if>
+			<if test="createBy != null and createBy != ''">create_by,</if>
 			create_time
 		) values (
 			<if test="groupId != null and groupId != ''">#{groupId},</if>
 			<if test="groupName != null and groupName != ''">#{groupName},</if>
 			<if test="deptId != null and deptId != ''">#{deptId},</if>
+			<if test="createBy != null and createBy != ''">#{createBy},</if>
 			sysdate()
 		)
 	</insert>

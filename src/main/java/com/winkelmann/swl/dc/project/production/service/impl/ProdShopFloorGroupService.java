@@ -31,16 +31,9 @@ public class ProdShopFloorGroupService implements IProdShopFloorGroupService
 
 	// 根据班组Id查询班组
 	@Override
-	public ProdShopFloorGroup selectShopFloorGroupById(Long shopFloorGroupId)
+	public ProdShopFloorGroup selectShopFloorGroupById(Long groupId)
 	{
-		return shopFloorGroupMapper.selectShopFloorGroupById(shopFloorGroupId);
-	}
-
-	// 根据名称查询班组
-	@Override
-	public List<ProdShopFloorGroup> selectShopFloorGroupByName(String shopFloorGroupName)
-	{
-		return shopFloorGroupMapper.selectShopFloorGroupByName(shopFloorGroupName);
+		return shopFloorGroupMapper.selectShopFloorGroupById(groupId);
 	}
 
 	// 新增车间班组

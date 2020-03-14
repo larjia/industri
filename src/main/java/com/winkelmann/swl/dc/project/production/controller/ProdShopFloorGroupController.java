@@ -29,7 +29,7 @@ import com.winkelmann.swl.dc.project.production.service.IProdShopFloorGroupServi
  *
  */
 @RestController
-@RequestMapping("/production/shopfloorgroup")
+@RequestMapping("/production/shopfloor/group")
 public class ProdShopFloorGroupController extends BaseController
 {
 	@Autowired
@@ -44,7 +44,7 @@ public class ProdShopFloorGroupController extends BaseController
 //		List<ProdShopFloorGroup> groups = shopFloorGroupService.selectShopFloorGroupList();
 //		return AjaxResult.success(groups);
 //	}
-	public TableDataInfo List(ProdShopFloorGroup group)
+	public TableDataInfo list(ProdShopFloorGroup group)
 	{
 		startPage();
 		List<ProdShopFloorGroup> list = shopFloorGroupService.selectShopFloorGroupList(group);
@@ -58,15 +58,6 @@ public class ProdShopFloorGroupController extends BaseController
 	public AjaxResult getInfoById(@PathVariable Long groupId)
 	{
 		return AjaxResult.success(shopFloorGroupService.selectShopFloorGroupById(groupId));
-	}
-	
-	/**
-	 * 根据班组名称查询班组
-	 */
-	@GetMapping("/{groupName}")
-	public AjaxResult getGroupsByName(@PathVariable String groupName)
-	{
-		return AjaxResult.success(shopFloorGroupService.selectShopFloorGroupByName(groupName));
 	}
 	
 	/**

@@ -16,9 +16,7 @@ public interface ProdShopFloorGroupMapper
 	// 查询所有班组数据
 	public List<ProdShopFloorGroup> selectShopFloorGroupList(ProdShopFloorGroup group);
 	// 根据Id查询班组
-	public ProdShopFloorGroup selectShopFloorGroupById(Long shopFloorGroupId);
-	// 根据名称查询班组
-	public List<ProdShopFloorGroup> selectShopFloorGroupByName(String shopFloorGroupName);
+	public ProdShopFloorGroup selectShopFloorGroupById(Long groupId);
 	// 校验班组名称是否唯一
 	public ProdShopFloorGroup checkGroupNameUnique(@Param("groupName") String groupName, @Param("deptId") Long deptId);
 	// 新增班组
