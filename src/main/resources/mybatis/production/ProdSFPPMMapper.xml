@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.winkelmann.swl.dc.project.production.mapper.ProdSFPPMMapper">
+
+	<resultMap type="ProdSFPPM"		id="ProdSFPPMResult">
+		<id		property="ppmId"			column="ppm_id"				/>
+		<result	property="prodDate"			column="prod_date"			/>
+		<result	property="partNumber"		column="part_number"		/>
+		<result	property="prodDept"			column="prod_dept"			/>
+		<result	property="prodSFGroup"		column="prod_sf_group"		/>
+		<result	property="prodSFOp"			column="prod_sf_op"			/>
+		<result	property="qtyCompleted"		column="qty_completed"		/>
+		<result	property="qtyRejected"		column="qty_rejected"		/>
+		<result	property="qtyScrapped"		column="qty_scrapped"		/>
+		<result	property="qtyAccepted"		column="qty_accepted"		/>
+		<result	property="operator"			column="operator"			/>
+		<result	property="shift"			column="shift"				/>
+		<result	property="ftq"				column="ftq"				/>
+		<result	property="ppm"				column="ppm"				/>		
+	</resultMap>
+	
+	<sql id="selectProdSFPPMVo">
+		select ppm_id, prod_date, part_number, prod_dept, prod_sf_group, prod_sf_op, shift, qty_completed, qty_rejected,
+			qty_scrapped, qty_accepted, operator, ftq, ppm
+		from prod_sf_ppm
+	</sql>
+	
+	<select id="selectProdSFPPMList" parameterType="ProdSFPPM" resultMap="ProdSFPPMResult">
+		<include refid="selectProdSFPPMVo" />
+		<where>
+			<if test="prodDate != null and prodDate != ''">
+				AND prod_date = #{prodDate}
+			</if>
+			<if test="partNumber != null and partNumber != ''">
+				AND part_number = #{partNumber}
+			</if>
+		</where>
+	</select>
+</mapper>

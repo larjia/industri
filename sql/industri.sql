@@ -182,14 +182,15 @@ insert into sys_menu values('113',  '表单构建', '3',   '1', 'build',      't
 insert into sys_menu values('114',  '代码生成', '3',   '2', 'gen',        'tool/gen/index',           1, 'C', '0', 'tool:gen:list',           'code',          'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '代码生成菜单');
 insert into sys_menu values('115',  '系统接口', '3',   '3', 'swagger',    'tool/swagger/index',       1, 'C', '0', 'tool:swagger:list',       'swagger',       'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '系统接口菜单');
 
-insert into sys_menu values('116',  '生产PPM', '4',   '1', 'prodppm',    'production/prodppm/index',  1, 'C', '0', 'production:prodppm:list','prodppm',        'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '生产PPM菜单');
-insert into sys_menu values('117',  '质量', '4',      '2', 'quality',    null,                        1, 'M', '0', '',                       'quality',        'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '生产质量菜单');
-insert into sys_menu values('118',  '车间', '4',      '3', 'shopfloor',  'production/shopfloor/index',1, 'M', '0', '',                       'shopfloor',      'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '生产车间菜单');
+-- insert into sys_menu values('116',  '生产PPM', '4',   '1', 'prodppm',    'production/prodppm/index',  1, 'C', '0', 'production:prodppm:list','prodppm',        'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '生产PPM菜单');
+insert into sys_menu values('117',  '质量', '4',      '2', 'quality',    'production/quality/index',  1, 'M', '0', '',                       'monitor',        'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '生产质量菜单');
+insert into sys_menu values('118',  '车间', '4',      '3', 'shopfloor',  'production/shopfloor/index',1, 'M', '0', '',                       'build',          'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '生产车间菜单');
 -- 三级菜单
 insert into sys_menu values('500',  '操作日志', '108', '1', 'operlog',    'monitor/operlog/index',                1, 'C', '0', 'monitor:operlog:list',    'form',          'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '操作日志菜单');
 insert into sys_menu values('501',  '登录日志', '108', '2', 'logininfor', 'monitor/logininfor/index',             1, 'C', '0', 'monitor:logininfor:list', 'logininfor',    'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '登录日志菜单');
 insert into sys_menu values('502',  '车间班组', '118', '1', 'group',      'production/shopfloor/group/index',     1, 'C', '0', '',                        'logininfor',    'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '车间班组菜单');
 insert into sys_menu values('503',  '车间工序', '118', '2', 'operation',  'production/shopfloor/operation/index', 1, 'C', '0', '',                        'list',          'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '车间工序菜单');
+insert into sys_menu values('504',  '质量PPM',  '117', '1', 'ppm',        'production/quality/ppm/index',        1, 'C', '0', '',                        'list',          'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '质量PPM菜单');
 -- 用户管理按钮
 insert into sys_menu values('1001', '用户查询', '100', '1',  '', '', 1, 'F', '0', 'system:user:query',          '#', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '');
 insert into sys_menu values('1002', '用户新增', '100', '2',  '', '', 1, 'F', '0', 'system:user:add',            '#', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '');
@@ -732,3 +733,80 @@ create table prod_shop_floor_operation (
 insert into prod_shop_floor_operation values (100,  '点胶', 100, 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
 insert into prod_shop_floor_operation values (101,  '钎焊上料', 100, 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
 insert into prod_shop_floor_operation values (102,  '下料+外观检验', 100, 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+
+
+-- ----------------------------
+-- 22、物料表字段
+-- ----------------------------
+drop table if exists part;
+create table part (
+  part_id          bigint(20)      not null auto_increment    comment '物料id',
+  part_number      varchar(20)     default ''                 comment '物料编码',
+  part_desc        varchar(60)     default ''                 comment '物料描述',
+  part_desc2       varchar(60)     default 0                  comment '物料描述2',
+  part_proj_name   varchar(60)     default 0                  comment '物料项目名称',
+  create_by        varchar(64)     default ''                 comment '创建者',
+  create_time 	   datetime                                   comment '创建时间',
+  update_by        varchar(64)     default ''                 comment '更新者',
+  update_time      datetime                                   comment '更新时间',
+  primary key (part_id)
+) engine=innodb auto_increment=200 comment = '物料表';
+
+-- ----------------------------
+-- 初始化 物料表
+-- ----------------------------
+insert into part values (100, '2300010127', '', '', 'F662 (FORD  FEU)',   'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (101, '2300010145', '', '', 'LGE',                'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (102, '2300240004', '', '', 'PSA-EB2GDI KVS',     'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (103, '2300020037', '', '', 'DEL-CA2.0 H16GDI',   'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (104, '2300240001', '', '', 'PSA-EP6GDI',         'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (105, '2300260007', '', '', 'MZD-BJ6-1.5GDI-00',  'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (106, '2300260008', '', '', 'MZD-BJ6-2.0GDI-00',  'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (107, '2300260009', '', '', 'MZD-BJ6-2.5GDI-00',  'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (108, '2300020046', '', '', 'DEL-CAH15TG-AD KVS', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (109, '2300250001L','', '', 'SVW-EA211GDI',       'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (110, '2300260003', '', '', 'MZD-SKY1.5GDI',      'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (111, '2300260001', '', '', 'MZD-SKY2.0GDI',      'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (112, '2300260002', '', '', 'MZD-SKY2.5GDI',      'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+
+-- ----------------------------
+-- 23、生产质量PPM表字段
+-- ----------------------------
+drop table if exists prod_sf_ppm;
+create table prod_sf_ppm (
+  ppm_id          bigint(20)      not null auto_increment    comment 'id',
+  prod_date       datetime                 					 comment '生产日期',
+  part_number     varchar(20)     default ''                 comment '物料编码',
+  prod_dept       varchar(30)     default ''                 comment '生产车间',
+  prod_sf_group   varchar(60)     default ''                 comment '车间班组',
+  prod_sf_op      varchar(60)     default ''                 comment '工序',
+  shift           char(1)         default '0'                comment '班次(0白班 1夜班)',
+  qty_completed   int			  default 0					 comment '完成数',
+  qty_rejected    int			  default 0					 comment '不良数',
+  qty_scrapped    int			  default 0					 comment '报废数',
+  qty_accepted    int			  default 0					 comment '合格数',
+  operator        varchar(60)     default ''                 comment '员工操作员',
+  ftq             double(16,2)                               comment 'FQT',
+  ppm             double(16,2)                               comment 'PPM',
+  create_by       varchar(64)     default ''                 comment '创建者',
+  create_time 	  datetime                                   comment '创建时间',
+  update_by       varchar(64)     default ''                 comment '更新者',
+  update_time     datetime                                   comment '更新时间',
+  primary key (ppm_id)
+) engine=innodb auto_increment=200 comment = '生产质量PPM表';
+
+-- ----------------------------
+-- 初始化 生产质量PPM表
+-- ----------------------------
+insert into prod_sf_ppm values (100, '2020-02-26', '2300260008', '高压车间', '压装焊接班', '压装', '白班', 900, 0, 0, 900, '金学枝', 100.00, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_sf_ppm values (101, '2020-02-26', '2300260008', '高压车间', '压装焊接班', '压装', '夜班', 300, 0, 0, 300, '邓小红', 100.00, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_sf_ppm values (102, '2020-02-26', '2300260008', '高压车间', '压装焊接班', '激光焊', '白班', 650, 0, 0, 650, '金学枝', 100.00, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_sf_ppm values (103, '2020-02-26', '2300260008', '高压车间', '压装焊接班', '激光焊', '夜班', 550, 0, 0, 550, '邓小红', 100.00, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_sf_ppm values (104, '2020-02-26', '2300260008', '高压车间', '检验班', '综检', '白班', 180, 5, 0, 175, '袁芳', 97.22, 27778, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_sf_ppm values (105, '2020-02-26', '2300020046', '高压车间', '检验班', '综检', '夜班', 590, 0, 0, 590, '杨芹', 100.00, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_sf_ppm values (106, '2020-02-26', '2300020046', '高压车间', '包装入库班', '包装', '白班', 540, 0, 0, 540, '金学枝', 100.00, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_sf_ppm values (107, '2020-02-26', '2300020046', '高压车间', '压装焊接班', '压装', '白班', 480, 0, 0, 480, '杨芹', 100.00, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_sf_ppm values (108, '2020-02-26', '2300020046', '高压车间', '压装焊接班', '压装', '夜班', 300, 0, 0, 300, '杨芹', 100.00, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_sf_ppm values (109, '2020-02-26', '2300020046', '高压车间', '压装焊接班', '激光焊', '白班', 180, 0, 0, 180, '袁芳', 100.00, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_sf_ppm values (110, '2020-02-26', '2300020046', '高压车间', '压装焊接班', '激光焊', '夜班', 450, 0, 0, 450, '袁芳', 100.00, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+
