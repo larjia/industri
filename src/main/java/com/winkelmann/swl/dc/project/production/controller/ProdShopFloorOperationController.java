@@ -38,6 +38,7 @@ public class ProdShopFloorOperationController extends BaseController
 	/**
 	 * 获取工序列表
 	 */
+	@GetMapping("/list")
 	public TableDataInfo list(ProdShopFloorOperation op)
 	{
 		startPage();
