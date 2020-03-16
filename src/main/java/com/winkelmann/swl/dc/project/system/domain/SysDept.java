@@ -34,6 +34,8 @@ public class SysDept extends BaseEntity
 	private String status;
 	// 删除标志 0存在 2删除
 	private String delFlag;
+	// 车间部门标志(0代表非车间部门1代表车间部门)
+	private String sfFlag;
 	// 父部门名称
 	private String parentName;
 	// 子部门
@@ -119,6 +121,16 @@ public class SysDept extends BaseEntity
 		this.delFlag = delFlag;
 	}
 	
+	public String getSfFlag()
+	{
+		return sfFlag;
+	}
+
+	public void setSfFlag(String sfFlag)
+	{
+		this.sfFlag = sfFlag;
+	}
+
 	public String getParentName() {
 		return parentName;
 	}
