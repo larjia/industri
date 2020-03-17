@@ -28,7 +28,7 @@
 	<select id="selectProdReportHistList" parameterType="ProdReportHist" resultMap="ProdReportHistResult">
 		<include refid="selectProdReportHistVo" />
 		<where>
-			<if test="prodDate != null and prodDate != ''">
+			<if test="prodDate != null">
 				AND prod_date = #{prodDate}
 			</if>
 			<if test="partNumber != null and partNumber != ''">
