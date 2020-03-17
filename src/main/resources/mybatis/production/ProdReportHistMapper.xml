@@ -36,4 +36,45 @@
 			</if>
 		</where>
 	</select>
+	
+	<select id="selectProdReportHistById" parameterType="Long" resultMap="ProdReportHistResult">
+		<include refid="selectProdReportHistVo" />
+		where id = #{id}
+	</select>
+	
+	<insert id="insertProdReportHist" parameterType="ProdReportHist" useGeneratedKeys="true" keyProperty="id">
+		insert into prod_report_hist (
+			<if test="id != null and id != 0">id,</if>
+			<if test="prodDate != null">prod_date,</if>
+			<if test="partNumber != null and partNumber != ''">part_number,</if>
+			<if test="prodDept != null and prodDept != ''">prod_dept,</if>
+			<if test="prodSFGroup != null and prodSFGroup != ''">prod_sf_group,</if>
+			<if test="prodSFOp != null and prodSFOp != ''">prod_sf_op,</if>
+			<if test="qtyCompleted != null and qtyCompleted != 0">qty_completed,</if>
+			<if test="qtyRejected != null and qtyRejected != 0">qty_rejected,</if>
+			<if test="qtyScrapped != null and qtyScrapped != 0">qty_scrapped,</if>
+			<if test="qtyAccepted != null and qtyAccepted != ''">qty_accepted,</if>
+			<if test="operator != null and operator != ''">operator,</if>
+			<if test="shift != null and shift != ''">shift,</if>
+			<if test="ppm != null and ppm != 0">ppm,</if>
+			<if test="ftq != null and ftq != 0">ftq,</if>
+			create_time
+		) values (
+			<if test="id != null and id != 0">#{id},</if>
+			<if test="prodDate != null">#{prodDate},</if>
+			<if test="partNumber != null and partNumber != ''">#{partNumber},</if>
+			<if test="prodDept != null and prodDept != ''">#{prodDept},</if>
+			<if test="prodSFGroup != null and prodSFGroup != ''">#{prodSFGroup},</if>
+			<if test="prodSFOp != null and prodSFOp != ''">#{prodSFOp},</if>
+			<if test="qtyCompleted != null and qtyCompleted != 0">#{qtyCompleted},</if>
+			<if test="qtyRejected != null and qtyRejected != 0">#{qtyRejected},</if>
+			<if test="qtyScrapped != null and qtyScrapped != 0">#{qtyScrapped},</if>
+			<if test="qtyAccepted != null and qtyAccepted != ''">#{qtyAccepted},</if>
+			<if test="operator != null and operator != ''">#{operator},</if>
+			<if test="shift != null and shift != ''">#{shift},</if>
+			<if test="ppm != null and ppm != 0">#{ppm},</if>
+			<if test="ftq != null and ftq != 0">#{ftq},</if>
+			sysdate()
+		)
+	</insert>
 </mapper>
