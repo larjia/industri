@@ -35,6 +35,7 @@
 				AND part_number = #{partNumber}
 			</if>
 		</where>
+		ORDER BY prod_date desc, part_number
 	</select>
 	
 	<select id="selectProdReportHistById" parameterType="Long" resultMap="ProdReportHistResult">
