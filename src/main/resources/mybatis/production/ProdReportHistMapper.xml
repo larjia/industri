@@ -56,8 +56,8 @@
 			<if test="qtyAccepted != null and qtyAccepted != ''">qty_accepted,</if>
 			<if test="operator != null and operator != ''">operator,</if>
 			<if test="shift != null and shift != ''">shift,</if>
-			<if test="ppm != null and ppm != 0">ppm,</if>
-			<if test="ftq != null and ftq != 0">ftq,</if>
+			<if test="ppm != null">ppm,</if>
+			<if test="ftq != null">ftq,</if>
 			create_time
 		) values (
 			<if test="id != null and id != 0">#{id},</if>
@@ -72,8 +72,8 @@
 			<if test="qtyAccepted != null and qtyAccepted != ''">#{qtyAccepted},</if>
 			<if test="operator != null and operator != ''">#{operator},</if>
 			<if test="shift != null and shift != ''">#{shift},</if>
-			<if test="ppm != null and ppm != 0">#{ppm},</if>
-			<if test="ftq != null and ftq != 0">#{ftq},</if>
+			<if test="ppm != null">#{ppm},</if>
+			<if test="ftq != null">#{ftq},</if>
 			sysdate()
 		)
 	</insert>
