@@ -45,6 +45,16 @@ public class SysDeptController extends BaseController
 	}
 	
 	/**
+	 * 获取车间部门列表(sfFlag = 1)
+	 */
+	@GetMapping("/listproddept")
+	public AjaxResult listproddept(SysDept dept)
+	{
+		List<SysDept> depts = deptService.selectProdDeptList(dept);
+		return AjaxResult.success(depts);
+	}
+	
+	/**
 	 * 根据部门编号获取详细信息
 	 */
 	@GetMapping(value = "/{deptId}")

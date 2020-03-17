@@ -14,6 +14,8 @@ public interface ISysDeptService
 {
 	// 查询部门管理数据
 	public List<SysDept> selectDeptList(SysDept dept);
+	// 查询车间部门
+	public List<SysDept> selectProdDeptList(SysDept dept);
 	// 构建前端所需要树结构
 	public List<SysDept> buildDeptTree(List<SysDept> depts);
 	// 构建前端所需要下拉树结构

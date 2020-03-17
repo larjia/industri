@@ -19,6 +19,11 @@ public interface SysDeptMapper
 	public List<SysDept> selectDeptList(SysDept dept);
 	
 	/**
+	 * 查询车间部门
+	 */
+	public List<SysDept> selectProdDeptList(SysDept dept);
+	
+	/**
 	 * 根据角色Id查询部门树信息
 	 */
 	public List<Integer> selectDeptListByRoleId(Long roleId);

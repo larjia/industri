@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<sql id="selectDeptVo">
 		select d.dept_id, d.parent_id, d.ancestors, d.dept_name, d.order_num, d.leader, d.phone, d.email, d.status, d.del_flag,
-		d.create_by, d.create_time
+		d.sf_flag, d.create_by, d.create_time
 		from sys_dept d
 	</sql>
 	
@@ -42,6 +42,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</if>
 		<!-- 数据范围过滤  -->
 		${dataScope}
+		order by d.parent_id, d.order_num
+	</select>
+	
+	<select id="selectProdDeptList" parameterType="SysDept" resultMap="SysDeptResult">
+		<include refid="selectDeptVo"/>
+		where d.del_flag = '0' and d.sf_flag = '1'
 		order by d.parent_id, d.order_num
 	</select>
 	

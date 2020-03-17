@@ -39,6 +39,15 @@ public class SysDeptServiceImpl implements ISysDeptService
 	}
 
 	/**
+	 * 查询车间部门
+	 */
+	@Override
+	public List<SysDept> selectProdDeptList(SysDept dept)
+	{
+		return deptMapper.selectProdDeptList(dept);
+	}
+
+	/**
 	 * 构建前端所需要树结构
 	 */
 	@Override
