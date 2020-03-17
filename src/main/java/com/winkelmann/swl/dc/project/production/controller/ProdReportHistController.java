@@ -84,6 +84,6 @@ public class ProdReportHistController extends BaseController
 	public AjaxResult remove(@PathVariable Long id)
 	{
 		// TODO 校验不允许删除生产报工的情况
-		return toAjax(prodReportHistService.deleteProdReportHist(id));
+		return toAjax(prodReportHistService.deleteProdReportHistById(id));
 	}
 }

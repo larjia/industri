@@ -786,7 +786,7 @@ create table prod_report_hist (
   qty_scrapped    int			  default 0					 comment '报废数',
   qty_accepted    int			  default 0					 comment '合格数',
   operator        varchar(60)     default ''                 comment '员工操作员',
-  ftq             double(16,2)                               comment 'FQT',
+  ftq             double(16,4)                               comment 'FQT',
   ppm             double(16,2)                               comment 'PPM',
   create_by       varchar(64)     default ''                 comment '创建者',
   create_time 	  datetime                                   comment '创建时间',

@@ -50,8 +50,8 @@ public class ProdReportHistService implements IProdReportHistService
 
 	// 通过Id删除生产报工
 	@Override
-	public int deleteProdReportHist(Long id)
+	public int deleteProdReportHistById(Long id)
 	{
-		return prodReportHistMapper.deleteProdReportHist(id);
+		return prodReportHistMapper.deleteProdReportHistById(id);
 	}
 }

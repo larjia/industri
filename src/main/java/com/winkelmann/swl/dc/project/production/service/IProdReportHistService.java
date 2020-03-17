@@ -20,5 +20,5 @@ public interface IProdReportHistService
 	// 修改生产报工
 	public int updateProdReportHist(ProdReportHist reportHist);
 	// 通过Id删除生产报工
-	public int deleteProdReportHist(Long id);
+	public int deleteProdReportHistById(Long id);
 }

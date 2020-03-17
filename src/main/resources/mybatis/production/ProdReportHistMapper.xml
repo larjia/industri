@@ -77,4 +77,30 @@
 			sysdate()
 		)
 	</insert>
+	
+	<update id="updateProdReportHist" parameterType="ProdReportHist">
+		update prod_report_hist
+		<set>
+			<if test="id != null and id != 0">id = #{id},</if>
+			<if test="prodDate != null">prod_date = #{prodDate},</if>
+			<if test="partNumber != null and partNumber != ''">part_number = #{partNumber},</if>
+			<if test="prodDept != null and prodDept != ''">prod_dept = #{prodDept},</if>
+			<if test="prodSFGroup != null and prodSFGroup != ''">prod_sf_group = #{prodSFGroup},</if>
+			<if test="prodSFOp != null and prodSFOp != ''">prod_sf_op = #{prodSFOp},</if>
+			<if test="qtyCompleted != null and qtyCompleted != 0">qty_completed = #{qtyCompleted},</if>
+			<if test="qtyRejected != null and qtyRejected != 0">qty_rejected = #{qtyRejected},</if>
+			<if test="qtyScrapped != null and qtyScrapped != 0">qty_scrapped = #{qtyScrapped},</if>
+			<if test="qtyAccepted != null and qtyAccepted != ''">qty_accepted = #{qtyAccepted},</if>
+			<if test="operator != null and operator != ''">operator = #{operator},</if>
+			<if test="shift != null and shift != ''">shift = #{shift},</if>
+			<if test="ppm != null and ppm != 0">ppm = #{ppm},</if>
+			<if test="ftq != null and ftq != 0">ftq = #{ftq},</if>
+			update_time = sysdate()
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteProdReportHistById" parameterType="Long">
+ 		delete from prod_report_hist where id = #{id}
+ 	</delete>
 </mapper>
