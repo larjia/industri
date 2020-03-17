@@ -9,12 +9,12 @@ import com.winkelmann.swl.dc.framework.web.domain.BaseEntity;
  * @author Administrator
  *
  */
-public class ProdSFPPM extends BaseEntity
+public class ProdReportHist extends BaseEntity
 {
 	private static final long serialVersionUID = 1L;
 	
 	// Id
-	private Long ppmId;
+	private Long id;
 	// 生产日期
 	private Date prodDate;
 	// 物料名称
@@ -42,18 +42,18 @@ public class ProdSFPPM extends BaseEntity
 	// PPM
 	private Double ppm;
 	
-	public ProdSFPPM()
+	public ProdReportHist()
 	{
 	}
 
-	public Long getPpmId()
+	public Long getId()
 	{
-		return ppmId;
+		return id;
 	}
 
-	public void setPpmId(Long ppmId)
+	public void setId(Long id)
 	{
-		this.ppmId = ppmId;
+		this.id = id;
 	}
 
 	public Date getProdDate()

@@ -9,29 +9,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.winkelmann.swl.dc.framework.web.controller.BaseController;
 import com.winkelmann.swl.dc.framework.web.page.TableDataInfo;
-import com.winkelmann.swl.dc.project.production.domain.ProdSFPPM;
-import com.winkelmann.swl.dc.project.production.service.IProdSFPPMService;
+import com.winkelmann.swl.dc.project.production.domain.ProdReportHist;
+import com.winkelmann.swl.dc.project.production.service.IProdReportHistService;
 
 /**
- * 质量PPM信息
+ * 生产报工信息
  * @author Administrator
  *
  */
 @RestController
-@RequestMapping("/production/quality/ppm")
-public class ProdSFPPMController extends BaseController
+@RequestMapping("/production/prodreporthist/")
+public class ProdReportHistController extends BaseController
 {
 	@Autowired
-	private IProdSFPPMService prodSFPPMService;
+	private IProdReportHistService prodReportHistService;
 	
 	/**
-	 * 获取质量PPM列表
+	 * 获取生产报工信息列表
 	 */
 	@GetMapping("/list")
-	public TableDataInfo list(ProdSFPPM ppm)
+	public TableDataInfo list(ProdReportHist reportHist)
 	{
 		startPage();
-		List<ProdSFPPM> list = prodSFPPMService.selectProdSFPPMList(ppm);
+		List<ProdReportHist> list = prodReportHistService.selectProdReportHistList(reportHist);
 		return getDataTable(list);
 	}
 }

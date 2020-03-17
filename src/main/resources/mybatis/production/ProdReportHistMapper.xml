@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.winkelmann.swl.dc.project.production.mapper.ProdSFPPMMapper">
+<mapper namespace="com.winkelmann.swl.dc.project.production.mapper.ProdReportHistMapper">
 
-	<resultMap type="ProdSFPPM"		id="ProdSFPPMResult">
-		<id		property="ppmId"			column="ppm_id"				/>
+	<resultMap type="ProdReportHist"		id="ProdReportHistResult">
+		<id		property="id"				column="id"					/>
 		<result	property="prodDate"			column="prod_date"			/>
 		<result	property="partNumber"		column="part_number"		/>
 		<result	property="prodDept"			column="prod_dept"			/>
@@ -19,14 +19,14 @@
 		<result	property="ppm"				column="ppm"				/>		
 	</resultMap>
 	
-	<sql id="selectProdSFPPMVo">
-		select ppm_id, prod_date, part_number, prod_dept, prod_sf_group, prod_sf_op, shift, qty_completed, qty_rejected,
+	<sql id="selectProdReportHistVo">
+		select id, prod_date, part_number, prod_dept, prod_sf_group, prod_sf_op, shift, qty_completed, qty_rejected,
 			qty_scrapped, qty_accepted, operator, ftq, ppm
-		from prod_sf_ppm
+		from prod_report_hist
 	</sql>
 	
-	<select id="selectProdSFPPMList" parameterType="ProdSFPPM" resultMap="ProdSFPPMResult">
-		<include refid="selectProdSFPPMVo" />
+	<select id="selectProdReportHistList" parameterType="ProdReportHist" resultMap="ProdReportHistResult">
+		<include refid="selectProdReportHistVo" />
 		<where>
 			<if test="prodDate != null and prodDate != ''">
 				AND prod_date = #{prodDate}
