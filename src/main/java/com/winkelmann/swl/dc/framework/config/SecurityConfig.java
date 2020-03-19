@@ -11,8 +11,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.winkelmann.swl.dc.framework.security.filter.CorsFilter;
 import com.winkelmann.swl.dc.framework.security.filter.JwtAuthenticationTokenFilter;
 import com.winkelmann.swl.dc.framework.security.handle.AuthenticationEntryPointImpl;
 import com.winkelmann.swl.dc.framework.security.handle.LogoutSuccessHandlerImpl;
@@ -40,6 +42,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 	// token认证过滤器
 	@Autowired
 	private JwtAuthenticationTokenFilter authenticationTokenFilter;
+	
+	// CORS过滤器
+	@Autowired
+	private CorsFilter corsFilter;
 	
 	/**
 	 * 解决无法直接注入AuthenticationManager
@@ -100,6 +106,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 		httpSecurity.logout().logoutUrl("/logout").logoutSuccessHandler(logoutSuccessHandler);
 		// 添加JWT filter
 		httpSecurity.addFilterBefore(authenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
+		httpSecurity.addFilterBefore(corsFilter, ChannelProcessingFilter.class);
 	}
 	
 	/**
