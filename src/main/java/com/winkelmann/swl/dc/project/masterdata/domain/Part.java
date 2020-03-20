@@ -20,7 +20,9 @@ public class Part extends BaseEntity
 	// 物料描述2
 	private String partDesc2;
 	// 项目名称
-	private String partProjName; 
+	private String partProjName;
+	// 状态
+	private String status;
 	
 	public Part()
 	{
@@ -75,4 +77,15 @@ public class Part extends BaseEntity
 	{
 		this.partProjName = partProjName;
 	}
+
+	public String getStatus()
+	{
+		return status;
+	}
+
+	public void setStatus(String status)
+	{
+		this.status = status;
+	}
+	
 }
