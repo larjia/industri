@@ -4,15 +4,15 @@
 
 	<resultMap type="Part" id="PartResult">
 		<id		property="id"				column="id"				/>
-		<result property="partNumber"		column="part_number"	/>
-		<result property="partDesc"			column="part_desc"		/>
-		<result property="partDesc2"		column="part_desc2"		/>
-		<result property="partProjName"		column="part_proj_name"	/>
+		<result property="number"			column="number"			/>
+		<result property="desc"				column="desc"			/>
+		<result property="desc2"			column="desc2"			/>
+		<result property="projName"			column="proj_name"		/>
 		<result property="status"			column="status"			/>
 	</resultMap>
 	
 	<sql id="selectPartVo">
-		select id, part_number, part_desc, part_desc2, part_proj_name, part_status from part
+		select id, number, desc, desc2, proj_name, status from part
 	</sql>
 	
 	<select id="selectPartList" parameterType="Part" resultMap="PartResult">
@@ -21,17 +21,17 @@
 			<if test="id != null">
 				and id = #{id}
 			</if>
-			<if test="partNumber != null and partNumber != ''">
-				and part_number like concat('%', #{partNumber}, '%')
+			<if test="number != null and number != ''">
+				and number like concat('%', #{number}, '%')
 			</if>
-			<if test="partProjName != null and partProjName != ''">
-				and part_proj_name like concat('%', #{partProjName}, '%')
+			<if test="projName != null and projName != ''">
+				and proj_name like concat('%', #{projName}, '%')
 			</if>
-			<if test="partDesc != null and partDesc != ''">
-				and part_desc like concat('%', #{partDesc}, '%')
+			<if test="desc != null and desc != ''">
+				and desc like concat('%', #{desc}, '%')
 			</if>
-			<if test="partDesc2 != null and partDesc2 != ''">
-				and part_desc2 like concat('%', #{partDesc2}, '%')
+			<if test="desc2 != null and desc2 != ''">
+				and desc2 like concat('%', #{desc2}, '%')
 			</if>
 		</where>
 	</select>
@@ -43,30 +43,30 @@
 	
 	<select id="selectPartByNumber" parameterType="String" resultMap="PartResult">
 		<include refid="selectPartVo"/>
-		where part_number = #{partNumber}
+		where number = #{number}
 	</select>
 	
 	<select id="checkPartNumberUnique" resultMap="PartResult">
 		<include refid="selectPartVo" />
-		where part_number = #{partNumber}
+		where number = #{number}
 	</select>
 	
 	<insert id="insertPart" parameterType="Part" useGeneratedKeys="true" keyProperty="id">
 		insert into part (
 			<if test="id != null and id != 0">id,</if>
-			<if test="partNumber != null and partNumber != ''">part_number,</if>
-			<if test="partDesc != null and partDesc != ''">part_desc,</if>
-			<if test="partDesc2 != null and partDesc2 != ''">part_desc2,</if>
-			<if test="partProjName != null and partProjName != ''">part_proj_name,</if>
-			<if test="partStatus != null and partStatus != ''">part_status,</if>
+			<if test="number != null and number != ''">number,</if>
+			<if test="desc != null and desc != ''">desc,</if>
+			<if test="desc2 != null and desc2 != ''">desc2,</if>
+			<if test="projName != null and projName != ''">proj_name,</if>
+			<if test="status != null and status != ''">status,</if>
 			create_time
 		) values (
 			<if test="id != null and id != 0">#{id},</if>
-			<if test="partNumber != null and partNumber != ''">#{partNumber},</if>
-			<if test="partDesc != null and partDesc != ''">#{partDesc},</if>
-			<if test="partDesc2 != null and partDesc2 != ''">#{partDesc2},</if>
-			<if test="partProjName != null and partProjName != ''">#{partProjName},</if>
-			<if test="partStatus != null and partStatus != ''">#{partStatus},</if>
+			<if test="number != null and number != ''">#{number},</if>
+			<if test="desc != null and desc != ''">#{desc},</if>
+			<if test="desc2 != null and desc2 != ''">#{desc2},</if>
+			<if test="projName != null and projName != ''">#{projName},</if>
+			<if test="status != null and status != ''">#{status},</if>
 			sysdate()
 		)
 	</insert>
@@ -75,11 +75,11 @@
 		update part
 		<set>
 			<if test="id != null and id != 0">id = #{id},</if>
-			<if test="partNumber != null and partNumber != ''">part_number = #{partNumber},</if>
-			<if test="partDesc != null and partDesc != ''">part_desc = #{partDesc},</if>
-			<if test="partDesc2 != null and partDesc2 != ''">part_desc2 = #{partDesc2},</if>
-			<if test="partProjName != null and partProjName != ''">part_proj_name = #{partProjName},</if>
-			<if test="partStatus != null and partStatus != ''">part_status = #{partStatus},</if>
+			<if test="number != null and number != ''">number = #{number},</if>
+			<if test="desc != null and desc != ''">desc = #{desc},</if>
+			<if test="desc2 != null and desc2 != ''">desc2 = #{desc2},</if>
+			<if test="projName != null and projName != ''">projName = #{projName},</if>
+			<if test="status != null and status != ''">status = #{status},</if>
 			update_time = sysdate()
 		</set>
 		where id = #{id}
@@ -90,6 +90,6 @@
 	</delete>
 	
 	<delete id="deletePartByNumber" parameterType="String">
-		delete from part where part_number = #{partNumber}
+		delete from part where number = #{number}
 	</delete>
 </mapper>

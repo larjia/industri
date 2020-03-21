@@ -14,15 +14,15 @@ public class Part extends BaseEntity
 	// 物料Id
 	private Long id;
 	// 物料编码
-	private String partNumber;
+	private String number;
 	// 物料描述1
-	private String partDesc;
+	private String desc;
 	// 物料描述2
-	private String partDesc2;
+	private String desc2;
 	// 项目名称
-	private String partProjName;
+	private String projName;
 	// 状态
-	private String partStatus;
+	private String status;
 	
 	public Part()
 	{
@@ -38,54 +38,53 @@ public class Part extends BaseEntity
 		this.id = id;
 	}
 
-	public String getPartNumber()
+	public String getNumber()
 	{
-		return partNumber;
+		return number;
 	}
 
-	public void setPartNumber(String partNumber)
+	public void setNumber(String number)
 	{
-		this.partNumber = partNumber;
+		this.number = number;
 	}
 
-	public String getPartDesc()
+	public String getDesc()
 	{
-		return partDesc;
+		return desc;
 	}
 
-	public void setPartDesc(String partDesc)
+	public void setDesc(String desc)
 	{
-		this.partDesc = partDesc;
+		this.desc = desc;
 	}
 
-	public String getPartDesc2()
+	public String getDesc2()
 	{
-		return partDesc2;
+		return desc2;
 	}
 
-	public void setPartDesc2(String partDesc2)
+	public void setDesc2(String desc2)
 	{
-		this.partDesc2 = partDesc2;
+		this.desc2 = desc2;
 	}
 
-	public String getPartProjName()
+	public String getProjName()
 	{
-		return partProjName;
+		return projName;
 	}
 
-	public void setPartProjName(String partProjName)
+	public void setProjName(String projName)
 	{
-		this.partProjName = partProjName;
+		this.projName = projName;
 	}
 
-	public String getPartStatus()
+	public String getStatus()
 	{
-		return partStatus;
+		return status;
 	}
 
-	public void setPartStatus(String partStatus)
+	public void setStatus(String status)
 	{
-		this.partStatus = partStatus;
+		this.status = status;
 	}
-	
 }

@@ -60,7 +60,7 @@ public class PartController extends BaseController
 	{
 		if (UserConstants.NOT_UNIQUE.equals(partService.checkPartNumberUnique(part)))
 		{
-			return AjaxResult.error("新增物料'" + part.getPartNumber() + "'失败,物料编码已存在.");
+			return AjaxResult.error("新增物料'" + part.getNumber() + "'失败,物料编码已存在.");
 		}
 		part.setCreateBy(SecurityUtils.getUserName());
 		return toAjax(partService.insertPart(part));
@@ -72,7 +72,7 @@ public class PartController extends BaseController
 	{
 		if (UserConstants.NOT_UNIQUE.equals(partService.checkPartNumberUnique(part)))
 		{
-			return AjaxResult.error("修改物料'" + part.getPartNumber() + "'失败,物料编码已经存在.");
+			return AjaxResult.error("修改物料'" + part.getNumber() + "'失败,物料编码已经存在.");
 		}
 		part.setUpdateBy(SecurityUtils.getUserName());
 		return toAjax(partService.updatePart(part));

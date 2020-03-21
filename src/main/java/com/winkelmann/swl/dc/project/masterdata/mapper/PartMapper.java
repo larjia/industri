@@ -24,7 +24,7 @@ public interface PartMapper
 	// 根据物料描述查询物料
 //	public List<Part> selectPartListByDesc(String desc);
 	// 校验物料编码是否唯一
-	public Part checkPartNumberUnique(@Param("partNumber") String partNumber);
+	public Part checkPartNumberUnique(@Param("number") String number);
 	// 新增物料
 	public int insertPart(Part part);
 	// 修改物料

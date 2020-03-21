@@ -39,7 +39,7 @@ public class PartService implements IPartService
 	public String checkPartNumberUnique(Part part)
 	{
 		Long id = StringUtils.isNull(part.getId()) ? -1L : part.getId();
-		Part info =  partMapper.checkPartNumberUnique(part.getPartNumber());
+		Part info =  partMapper.checkPartNumberUnique(part.getNumber());
 		if (StringUtils.isNotNull(info) && info.getId() != id.longValue())
 		{
 			return UserConstants.NOT_UNIQUE;
