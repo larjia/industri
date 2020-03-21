@@ -7,41 +7,41 @@ import com.winkelmann.swl.dc.framework.web.domain.BaseEntity;
  * @author Administrator
  *
  */
-public class ProdShopFloorOperation extends BaseEntity
+public class ProdSFOperation extends BaseEntity
 {
 	private static final long serialVersionUID = 1L;
 	
 	// 工序Id
-	private Long operationId;
+	private Long id;
 	// 工序名称
-	private String operationName;
+	private String name;
 	// 班组Id
 	private Long groupId;
 	// 班组对象
-	private ProdShopFloorGroup group;
+	private ProdSFGroup group;
 	
-	public ProdShopFloorOperation()
+	public ProdSFOperation()
 	{
 	}
 
-	public Long getOperationId()
+	public Long getId()
 	{
-		return operationId;
+		return id;
 	}
 
-	public void setOperationId(Long operationId)
+	public void setId(Long id)
 	{
-		this.operationId = operationId;
+		this.id = id;
 	}
 
-	public String getOperationName()
+	public String getName()
 	{
-		return operationName;
+		return name;
 	}
 
-	public void setOperationName(String operationName)
+	public void setName(String name)
 	{
-		this.operationName = operationName;
+		this.name = name;
 	}
 
 	public Long getGroupId()
@@ -54,12 +54,12 @@ public class ProdShopFloorOperation extends BaseEntity
 		this.groupId = groupId;
 	}
 
-	public ProdShopFloorGroup getGroup()
+	public ProdSFGroup getGroup()
 	{
 		return group;
 	}
 
-	public void setGroup(ProdShopFloorGroup group)
+	public void setGroup(ProdSFGroup group)
 	{
 		this.group = group;
 	}

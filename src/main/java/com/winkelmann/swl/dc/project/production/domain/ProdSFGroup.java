@@ -6,41 +6,41 @@ import com.winkelmann.swl.dc.project.system.domain.SysDept;
 /*
  * 生产车间班组 比如钎焊班 检验班 包装入库班
  */
-public class ProdShopFloorGroup extends BaseEntity
+public class ProdSFGroup extends BaseEntity
 {
 	private static final long serialVersionUID = 1L;
 	
 	// 班组Id
-	private Long groupId;
+	private Long id;
 	// 班组名称
-	private String groupName;
+	private String name;
 	// 部门Id
 	private Long deptId;
 	// 部门对象
 	private SysDept dept;
 	
-	public ProdShopFloorGroup()
+	public ProdSFGroup()
 	{
 	}
 
-	public Long getGroupId()
+	public Long getId()
 	{
-		return groupId;
+		return id;
 	}
 
-	public void setGroupId(Long groupId)
+	public void setId(Long id)
 	{
-		this.groupId = groupId;
+		this.id = id;
 	}
 
-	public String getGroupName()
+	public String getName()
 	{
-		return groupName;
+		return name;
 	}
 
-	public void setGroupName(String groupName)
+	public void setName(String name)
 	{
-		this.groupName = groupName;
+		this.name = name;
 	}
 
 	public Long getDeptId()

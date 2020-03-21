@@ -700,47 +700,78 @@ create table gen_table_column (
 -- ----------------------------
 -- 20、生产车间班组表字段
 -- ----------------------------
-drop table if exists prod_shop_floor_group;
-create table prod_shop_floor_group (
-  group_id          bigint(20)      not null auto_increment    comment '班组id',
+-- drop table if exists prod_shop_floor_group;
+-- create table prod_shop_floor_group (
+--   group_id          bigint(20)      not null auto_increment    comment '班组id',
+--   dept_id           bigint(20)      default 0                  comment '车间部门id',
+--   group_name        varchar(60)     default ''                 comment '班组名称',
+--   create_by         varchar(64)     default ''                 comment '创建者',
+--   create_time 	    datetime                                   comment '创建时间',
+--   update_by         varchar(64)     default ''                 comment '更新者',
+--   update_time       datetime                                   comment '更新时间',
+--   primary key (group_id)
+-- ) engine=innodb auto_increment=200 comment = '班组表';
+
+drop table if exists prod_sf_group;
+create table prod_sf_group (
+  id          		bigint(20)      not null auto_increment    comment '班组id',
   dept_id           bigint(20)      default 0                  comment '车间部门id',
-  group_name        varchar(60)     default ''                 comment '班组名称',
+  name        		varchar(60)     default ''                 comment '班组名称',
   create_by         varchar(64)     default ''                 comment '创建者',
   create_time 	    datetime                                   comment '创建时间',
   update_by         varchar(64)     default ''                 comment '更新者',
   update_time       datetime                                   comment '更新时间',
-  primary key (group_id)
+  primary key (id)
 ) engine=innodb auto_increment=200 comment = '班组表';
 
 -- ----------------------------
 -- 初始化 生产车间班组表
 -- ----------------------------
-insert into prod_shop_floor_group values (100,  101, '钎焊班', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
-insert into prod_shop_floor_group values (101,  101, '检验班', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
-insert into prod_shop_floor_group values (102,  101, '包装入库班', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+-- insert into prod_shop_floor_group values (100,  101, '钎焊班', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+-- insert into prod_shop_floor_group values (101,  101, '检验班', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+-- insert into prod_shop_floor_group values (102,  101, '包装入库班', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+
+insert into prod_sf_group values (100,  101, '钎焊班', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_sf_group values (101,  101, '检验班', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_sf_group values (102,  101, '包装入库班', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
 
 -- ----------------------------
 -- 21、生产车间班组工序表字段
 -- ----------------------------
-drop table if exists prod_shop_floor_operation;
-create table prod_shop_floor_operation (
-  operation_id          bigint(20)      not null auto_increment    comment '工序id',
-  operation_name        varchar(60)     default ''                 comment '工序名称',
+-- drop table if exists prod_shop_floor_operation;
+-- create table prod_shop_floor_operation (
+--   operation_id          bigint(20)      not null auto_increment    comment '工序id',
+--   operation_name        varchar(60)     default ''                 comment '工序名称',
+--   group_id              bigint(20)      default 0                  comment '车间班组id',
+--   create_by             varchar(64)     default ''                 comment '创建者',
+--   create_time 	        datetime                                   comment '创建时间',
+--   update_by             varchar(64)     default ''                 comment '更新者',
+--   update_time           datetime                                   comment '更新时间',
+--   primary key (operation_id)
+-- ) engine=innodb auto_increment=200 comment = '工序表';
+
+drop table if exists prod_sf_operation;
+create table prod_sf_operation (
+  id          			bigint(20)      not null auto_increment    comment '工序id',
+  name        			varchar(60)     default ''                 comment '工序名称',
   group_id              bigint(20)      default 0                  comment '车间班组id',
   create_by             varchar(64)     default ''                 comment '创建者',
   create_time 	        datetime                                   comment '创建时间',
   update_by             varchar(64)     default ''                 comment '更新者',
   update_time           datetime                                   comment '更新时间',
-  primary key (operation_id)
+  primary key (id)
 ) engine=innodb auto_increment=200 comment = '工序表';
 
 -- ----------------------------
 -- 初始化 生产车间班组表
 -- ----------------------------
-insert into prod_shop_floor_operation values (100,  '点胶', 100, 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
-insert into prod_shop_floor_operation values (101,  '钎焊上料', 100, 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
-insert into prod_shop_floor_operation values (102,  '下料+外观检验', 100, 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+-- insert into prod_shop_floor_operation values (100,  '点胶', 100, 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+-- insert into prod_shop_floor_operation values (101,  '钎焊上料', 100, 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+-- insert into prod_shop_floor_operation values (102,  '下料+外观检验', 100, 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
 
+insert into prod_sf_operation values (100,  '点胶', 100, 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_sf_operation values (101,  '钎焊上料', 100, 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_sf_operation values (102,  '下料+外观检验', 100, 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
 
 -- ----------------------------
 -- 22、物料表字段

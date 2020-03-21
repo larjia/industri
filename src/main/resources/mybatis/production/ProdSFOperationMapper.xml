@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.winkelmann.swl.dc.project.production.mapper.ProdSFOperationMapper">
+
+	<resultMap type="ProdSFOperation" id="ProdSFOperationResult">
+		<id				property="id"				column="id"					/>
+		<result 		property="name"				column="name"				/>
+		<result 		property="createTime"		column="create_time"		/>
+		<result 		property="groupId"			column="group_id"			/>
+		<association 	property="group"			column="group_id"	javaType="ProdShopFloorGroup"	resultMap="groupResult" />
+	</resultMap>
+	
+	<resultMap id="groupResult" type="ProdSFGroup">
+		<id			 property="groupId"		column="group_id" 		/>
+		<result 	 property="groupName"	column="group_name" 	/>
+		<association property="dept" 	column="dept_id" 	javaType="SysDept" resultMap="deptResult" />
+	</resultMap>
+	
+	<resultMap id="deptResult" type="SysDept">
+		<id		property="deptId"		column="dept_id"	/>
+		<result property="deptName"		column="dept_name"	/>
+	</resultMap>
+	
+	<sql id="selectOperationVo">
+		select sfo.id, sfo.name, sfo.group_id, sfo.create_time, sfg.group_id, sfg.name,
+			d.dept_id, d.dept_name
+		from prod_sf_operation sfo
+			left join prod_sf_group sfg on sfo.id = sfg.id
+			left join sys_dept d on sfg.dept_id = d.dept_id
+	</sql>
+	
+	<select id="selectOperationList" parameterType="ProdSFOperation" resultMap="ProdSFOperationResult">
+		<include refid="selectOperationVo" />
+		<where>
+			<if test="name != null and name != ''">
+				AND sfo.name like concat('%', #{name}, '%')
+			</if>
+			<if test="groupId != null and groupId != 0">
+				AND sfo.group_id = #{groupId}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectOperationById" parameterType="Long" resultMap="ProdSFOperationResult">
+		<include refid="selectOperationVo" />
+		where sfo.id = #{id}
+	</select>
+	
+	<select id="checkOperationNameUnique" resultMap="ProdSFOperationResult">
+		<include refid="selectOperationVo" />
+		where sfo.name = #{name} and sfo.group_id = #{groupId}
+	</select>
+	
+	<insert id="insertOperation" parameterType="ProdSFOperation" useGeneratedKeys="true" keyProperty="id">
+		insert into prod_sf_operation (
+			<if test="id != null and id != 0">id,</if>
+			<if test="name != null and name != ''">name,</if>
+			<if test="groupId != null and groupId != 0">group_id,</if>
+			<if test="createBy != null and createBy != ''">create_by,</if>
+			create_time
+		) values (
+			<if test="id != null and id != ''">#{id},</if>
+			<if test="name != null and name != ''">#{name},</if>
+			<if test="groupId != null and groupId != ''">#{groupId},</if>
+			<if test="createBy != null and createBy != ''">#{createBy},</if>
+			sysdate()
+		)
+	</insert>
+	
+	<update id="updateOperation" parameterType="ProdSFOperation">
+		update prod_sf_operation
+		<set>
+			<if test="id != null and id != 0">id = #{id},</if>
+			<if test="name != null and name != ''">name = #{name},</if>
+			<if test="groupId != null and groupId != 0">group_id = #{groupId},</if>
+			<if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			update_time = sysdate()
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteOperationById" parameterType="Long">
+		delete from prod_sf_operation where id = #{id}
+	</delete>
+</mapper>

@@ -20,8 +20,8 @@ import com.winkelmann.swl.dc.framework.aspectj.lang.enums.BusinessType;
 import com.winkelmann.swl.dc.framework.web.controller.BaseController;
 import com.winkelmann.swl.dc.framework.web.domain.AjaxResult;
 import com.winkelmann.swl.dc.framework.web.page.TableDataInfo;
-import com.winkelmann.swl.dc.project.production.domain.ProdShopFloorOperation;
-import com.winkelmann.swl.dc.project.production.service.IProdShopFloorOperationService;
+import com.winkelmann.swl.dc.project.production.domain.ProdSFOperation;
+import com.winkelmann.swl.dc.project.production.service.IProdSFOperationService;
 
 /**
  * 生产车间班组工序信息
@@ -30,19 +30,19 @@ import com.winkelmann.swl.dc.project.production.service.IProdShopFloorOperationS
  */
 @RestController
 @RequestMapping("/production/shopfloor/operation")
-public class ProdShopFloorOperationController extends BaseController
+public class ProdSFOperationController extends BaseController
 {
 	@Autowired
-	private IProdShopFloorOperationService operationService;
+	private IProdSFOperationService operationService;
 	
 	/**
 	 * 获取工序列表
 	 */
 	@GetMapping("/list")
-	public TableDataInfo list(ProdShopFloorOperation op)
+	public TableDataInfo list(ProdSFOperation op)
 	{
 		startPage();
-		List<ProdShopFloorOperation> list = operationService.selectOperationList(op);
+		List<ProdSFOperation> list = operationService.selectOperationList(op);
 		return getDataTable(list);
 	}
 	
@@ -60,11 +60,11 @@ public class ProdShopFloorOperationController extends BaseController
 	 */
 	@Log(title = "工序管理", businessType = BusinessType.INSERT)
 	@PostMapping
-	public AjaxResult add(@Validated @RequestBody ProdShopFloorOperation op)
+	public AjaxResult add(@Validated @RequestBody ProdSFOperation op)
 	{
 		if (UserConstants.NOT_UNIQUE.equals(operationService.checkOperationNameUnique(op)))
 		{
-			return AjaxResult.error("新增工序'" + op.getOperationName() + "'失败,工序名称已存在.");
+			return AjaxResult.error("新增工序'" + op.getName() + "'失败,工序名称已存在.");
 		}
 		op.setCreateBy(SecurityUtils.getUserName());
 		return toAjax(operationService.insertOperation(op));
@@ -75,11 +75,11 @@ public class ProdShopFloorOperationController extends BaseController
 	 */
 	@Log(title = "工序管理", businessType = BusinessType.UPDATE)
 	@PutMapping
-	public AjaxResult edit(@Validated @RequestBody ProdShopFloorOperation op)
+	public AjaxResult edit(@Validated @RequestBody ProdSFOperation op)
 	{
 		if (UserConstants.NOT_UNIQUE.equals(operationService.checkOperationNameUnique(op)))
 		{
-			return AjaxResult.error("修改工序'" + op.getOperationName() + "'失败,工序名称已存在.");
+			return AjaxResult.error("修改工序'" + op.getName() + "'失败,工序名称已存在.");
 		}
 		op.setUpdateBy(SecurityUtils.getUserName());
 		return toAjax(operationService.updateOperation(op));

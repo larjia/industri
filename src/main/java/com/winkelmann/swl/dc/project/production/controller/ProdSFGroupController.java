@@ -20,8 +20,8 @@ import com.winkelmann.swl.dc.framework.aspectj.lang.enums.BusinessType;
 import com.winkelmann.swl.dc.framework.web.controller.BaseController;
 import com.winkelmann.swl.dc.framework.web.domain.AjaxResult;
 import com.winkelmann.swl.dc.framework.web.page.TableDataInfo;
-import com.winkelmann.swl.dc.project.production.domain.ProdShopFloorGroup;
-import com.winkelmann.swl.dc.project.production.service.IProdShopFloorGroupService;
+import com.winkelmann.swl.dc.project.production.domain.ProdSFGroup;
+import com.winkelmann.swl.dc.project.production.service.IProdSFGroupService;
 
 /**
  * 生产车间班组信息
@@ -30,10 +30,10 @@ import com.winkelmann.swl.dc.project.production.service.IProdShopFloorGroupServi
  */
 @RestController
 @RequestMapping("/production/shopfloor/group")
-public class ProdShopFloorGroupController extends BaseController
+public class ProdSFGroupController extends BaseController
 {
 	@Autowired
-	private IProdShopFloorGroupService shopFloorGroupService;
+	private IProdSFGroupService groupService;
 	
 	/**
 	 * 获取班组列表
@@ -44,10 +44,10 @@ public class ProdShopFloorGroupController extends BaseController
 //		List<ProdShopFloorGroup> groups = shopFloorGroupService.selectShopFloorGroupList();
 //		return AjaxResult.success(groups);
 //	}
-	public TableDataInfo list(ProdShopFloorGroup group)
+	public TableDataInfo list(ProdSFGroup group)
 	{
 		startPage();
-		List<ProdShopFloorGroup> list = shopFloorGroupService.selectShopFloorGroupList(group);
+		List<ProdSFGroup> list = groupService.selectGroupList(group);
 		return getDataTable(list);
 	}
 	
@@ -57,7 +57,7 @@ public class ProdShopFloorGroupController extends BaseController
 	@GetMapping("/{groupId}")
 	public AjaxResult getInfoById(@PathVariable Long groupId)
 	{
-		return AjaxResult.success(shopFloorGroupService.selectShopFloorGroupById(groupId));
+		return AjaxResult.success(groupService.selectGroupById(groupId));
 	}
 	
 	/**
@@ -65,14 +65,14 @@ public class ProdShopFloorGroupController extends BaseController
 	 */
 	@Log(title = "班组管理", businessType = BusinessType.INSERT)
 	@PostMapping
-	public AjaxResult add(@Validated @RequestBody ProdShopFloorGroup group)
+	public AjaxResult add(@Validated @RequestBody ProdSFGroup group)
 	{
-		if (UserConstants.NOT_UNIQUE.equals(shopFloorGroupService.checkShopFloorGroupNameUnique(group)))
+		if (UserConstants.NOT_UNIQUE.equals(groupService.checkGroupNameUnique(group)))
 		{
-			return AjaxResult.error("新增班组'" + group.getGroupName() + "'失败, 班组名称已存在.");
+			return AjaxResult.error("新增班组'" + group.getName() + "'失败, 班组名称已存在.");
 		}
 		group.setCreateBy(SecurityUtils.getUserName());
-		return toAjax(shopFloorGroupService.insertShopFloorGroup(group));
+		return toAjax(groupService.insertGroup(group));
 	}
 	
 	/**
@@ -80,15 +80,15 @@ public class ProdShopFloorGroupController extends BaseController
 	 */
 	@Log(title = "班组管理", businessType = BusinessType.UPDATE)
 	@PutMapping
-	public AjaxResult edit(@Validated @RequestBody ProdShopFloorGroup group)
+	public AjaxResult edit(@Validated @RequestBody ProdSFGroup group)
 	{
-		if (UserConstants.NOT_UNIQUE.equals(shopFloorGroupService.checkShopFloorGroupNameUnique(group)))
+		if (UserConstants.NOT_UNIQUE.equals(groupService.checkGroupNameUnique(group)))
 		{
-			return AjaxResult.error("修改部门'" + group.getGroupName() + "'失败, 部门名称已存在.");
+			return AjaxResult.error("修改部门'" + group.getName() + "'失败, 部门名称已存在.");
 		}
 		// TODO 增加班组所属部门是否为车间部门的校验.班组所属部门需为车间部门
 		group.setUpdateBy(SecurityUtils.getUserName());
-		return toAjax(shopFloorGroupService.updateShopFloorGroup(group));
+		return toAjax(groupService.updateGroup(group));
 	}
 	
 	/**
@@ -99,6 +99,6 @@ public class ProdShopFloorGroupController extends BaseController
 	public AjaxResult remove(@PathVariable Long groupId)
 	{
 		// TODO 校验不允许删除班组的情况
-		return toAjax(shopFloorGroupService.deleteShopFloorGroupById(groupId));
+		return toAjax(groupService.deleteGroupById(groupId));
 	}
 }
