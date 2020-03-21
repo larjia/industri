@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.winkelmann.swl.dc.project.masterdata.mapper.PartMapper">
+
+	<resultMap type="Part" id="PartResult">
+		<id		property="id"				column="id"				/>
+		<result property="partNumber"		column="part_number"	/>
+		<result property="partDesc"			column="part_desc"		/>
+		<result property="partDesc2"		column="part_desc2"		/>
+		<result property="partProjName"		column="part_proj_name"	/>
+		<result property="status"			column="status"			/>
+	</resultMap>
+	
+	<sql id="selectPartVo">
+		select id, part_number, part_desc, part_desc2, part_proj_name, part_status from part
+	</sql>
+	
+	<select id="selectPartList" parameterType="Part" resultMap="PartResult">
+		<include refid="selectPartVo" />
+		<where>
+			<if test="id != null">
+				and id = #{id}
+			</if>
+			<if test="partNumber != null and partNumber != ''">
+				and part_number like concat('%', #{partNumber}, '%')
+			</if>
+			<if test="partProjName != null and partProjName != ''">
+				and part_proj_name like concat('%', #{partProjName}, '%')
+			</if>
+			<if test="partDesc != null and partDesc != ''">
+				and part_desc like concat('%', #{partDesc}, '%')
+			</if>
+			<if test="partDesc2 != null and partDesc2 != ''">
+				and part_desc2 like concat('%', #{partDesc2}, '%')
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectPartById" parameterType="Long" resultMap="PartResult">
+		<include refid="selectPartVo"/>
+		where id = #{id}
+	</select>
+	
+	<select id="selectPartByNumber" parameterType="String" resultMap="PartResult">
+		<include refid="selectPartVo"/>
+		where part_number = #{partNumber}
+	</select>
+	
+	<select id="checkPartNumberUnique" resultMap="PartResult">
+		<include refid="selectPartVo" />
+		where part_number = #{partNumber}
+	</select>
+	
+	<insert id="insertPart" parameterType="Part" useGeneratedKeys="true" keyProperty="id">
+		insert into part (
+			<if test="id != null and id != 0">id,</if>
+			<if test="partNumber != null and partNumber != ''">part_number,</if>
+			<if test="partDesc != null and partDesc != ''">part_desc,</if>
+			<if test="partDesc2 != null and partDesc2 != ''">part_desc2,</if>
+			<if test="partProjName != null and partProjName != ''">part_proj_name,</if>
+			<if test="partStatus != null and partStatus != ''">part_status,</if>
+			create_time
+		) values (
+			<if test="id != null and id != 0">#{id},</if>
+			<if test="partNumber != null and partNumber != ''">#{partNumber},</if>
+			<if test="partDesc != null and partDesc != ''">#{partDesc},</if>
+			<if test="partDesc2 != null and partDesc2 != ''">#{partDesc2},</if>
+			<if test="partProjName != null and partProjName != ''">#{partProjName},</if>
+			<if test="partStatus != null and partStatus != ''">#{partStatus},</if>
+			sysdate()
+		)
+	</insert>
+	
+	<update id="updatePart" parameterType="Part">
+		update part
+		<set>
+			<if test="id != null and id != 0">id = #{id},</if>
+			<if test="partNumber != null and partNumber != ''">part_number = #{partNumber},</if>
+			<if test="partDesc != null and partDesc != ''">part_desc = #{partDesc},</if>
+			<if test="partDesc2 != null and partDesc2 != ''">part_desc2 = #{partDesc2},</if>
+			<if test="partProjName != null and partProjName != ''">part_proj_name = #{partProjName},</if>
+			<if test="partStatus != null and partStatus != ''">part_status = #{partStatus},</if>
+			update_time = sysdate()
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="deletePartById" parameterType="Long">
+		delete from part where id = #{id}
+	</delete>
+	
+	<delete id="deletePartByNumber" parameterType="String">
+		delete from part where part_number = #{partNumber}
+	</delete>
+</mapper>

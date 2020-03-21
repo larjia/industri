@@ -756,19 +756,19 @@ create table part (
 -- ----------------------------
 -- 初始化 物料表
 -- ----------------------------
-insert into part values (100, '2300010127', '', '', 'F662 (FORD  FEU)',   '', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
-insert into part values (101, '2300010145', '', '', 'LGE',                '', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
-insert into part values (102, '2300240004', '', '', 'PSA-EB2GDI KVS',     '', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
-insert into part values (103, '2300020037', '', '', 'DEL-CA2.0 H16GDI',   '', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
-insert into part values (104, '2300240001', '', '', 'PSA-EP6GDI',         '', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
-insert into part values (105, '2300260007', '', '', 'MZD-BJ6-1.5GDI-00',  '', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
-insert into part values (106, '2300260008', '', '', 'MZD-BJ6-2.0GDI-00',  '', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
-insert into part values (107, '2300260009', '', '', 'MZD-BJ6-2.5GDI-00',  '', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
-insert into part values (108, '2300020046', '', '', 'DEL-CAH15TG-AD KVS', '', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
-insert into part values (109, '2300250001L','', '', 'SVW-EA211GDI',       '', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
-insert into part values (110, '2300260003', '', '', 'MZD-SKY1.5GDI',      '', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
-insert into part values (111, '2300260001', '', '', 'MZD-SKY2.0GDI',      '', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
-insert into part values (112, '2300260002', '', '', 'MZD-SKY2.5GDI',      '', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (100, '2300010127', '', '', 'F662 (FORD  FEU)',   'Active', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (101, '2300010145', '', '', 'LGE',                'Active', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (102, '2300240004', '', '', 'PSA-EB2GDI KVS',     'Active', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (103, '2300020037', '', '', 'DEL-CA2.0 H16GDI',   'Active', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (104, '2300240001', '', '', 'PSA-EP6GDI',         'Active', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (105, '2300260007', '', '', 'MZD-BJ6-1.5GDI-00',  'Active', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (106, '2300260008', '', '', 'MZD-BJ6-2.0GDI-00',  'Active', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (107, '2300260009', '', '', 'MZD-BJ6-2.5GDI-00',  'Active', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (108, '2300020046', '', '', 'DEL-CAH15TG-AD KVS', 'Active', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (109, '2300250001L','', '', 'SVW-EA211GDI',       'Active', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (110, '2300260003', '', '', 'MZD-SKY1.5GDI',      'Active', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (111, '2300260001', '', '', 'MZD-SKY2.0GDI',      'Active', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into part values (112, '2300260002', '', '', 'MZD-SKY2.5GDI',      'Active', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
 
 -- ----------------------------
 -- 23、生产报工表字段

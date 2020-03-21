@@ -22,7 +22,7 @@ public class Part extends BaseEntity
 	// 项目名称
 	private String partProjName;
 	// 状态
-	private String status;
+	private String partStatus;
 	
 	public Part()
 	{
@@ -78,14 +78,14 @@ public class Part extends BaseEntity
 		this.partProjName = partProjName;
 	}
 
-	public String getStatus()
+	public String getPartStatus()
 	{
-		return status;
+		return partStatus;
 	}
 
-	public void setStatus(String status)
+	public void setPartStatus(String partStatus)
 	{
-		this.status = status;
+		this.partStatus = partStatus;
 	}
 	
 }
