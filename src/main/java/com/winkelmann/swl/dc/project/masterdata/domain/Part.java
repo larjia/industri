@@ -12,7 +12,7 @@ public class Part extends BaseEntity
 	private static final long serialVersionUID = 1L;
 	
 	// 物料Id
-	private Long partId;
+	private Long id;
 	// 物料编码
 	private String partNumber;
 	// 物料描述1
@@ -28,14 +28,14 @@ public class Part extends BaseEntity
 	{
 	}
 
-	public Long getPartId()
+	public Long getId()
 	{
-		return partId;
+		return id;
 	}
 
-	public void setPartId(Long partId)
+	public void setId(Long id)
 	{
-		this.partId = partId;
+		this.id = id;
 	}
 
 	public String getPartNumber()

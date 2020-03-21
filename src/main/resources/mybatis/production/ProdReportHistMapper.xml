@@ -5,23 +5,28 @@
 	<resultMap type="ProdReportHist"		id="ProdReportHistResult">
 		<id		property="id"				column="id"					/>
 		<result	property="prodDate"			column="prod_date"			/>
-		<result	property="partNumber"		column="part_number"		/>
-		<result	property="prodDept"			column="prod_dept"			/>
-		<result	property="prodSFGroup"		column="prod_sf_group"		/>
-		<result	property="prodSFOp"			column="prod_sf_op"			/>
+		<result	property="reportDate"		column="report_date"		/>
+		<result property="startTime"		column="start_time"			/>
+		<result property="endTime"			column="end_time"			/>
+		<result property="partProjName"		column="part_proj_name"		/>
+		<result property="partNumber"		column="part_number"		/>
+		<result	property="dep"				column="dept"				/>
+		<result	property="group"			column="group"				/>
+		<result	property="op"				column="op"					/>
+		<result	property="operator"			column="operator"			/>
+		<result	property="shift"			column="shift"				/>
+		<result	property="reason"			column="reason"				/>
 		<result	property="qtyCompleted"		column="qty_completed"		/>
 		<result	property="qtyRejected"		column="qty_rejected"		/>
 		<result	property="qtyScrapped"		column="qty_scrapped"		/>
 		<result	property="qtyAccepted"		column="qty_accepted"		/>
-		<result	property="operator"			column="operator"			/>
-		<result	property="shift"			column="shift"				/>
 		<result	property="ftq"				column="ftq"				/>
 		<result	property="ppm"				column="ppm"				/>		
 	</resultMap>
 	
 	<sql id="selectProdReportHistVo">
-		select id, prod_date, part_number, prod_dept, prod_sf_group, prod_sf_op, shift, qty_completed, qty_rejected,
-			qty_scrapped, qty_accepted, operator, ftq, ppm
+		select id, prod_date, report_date, start_time, end_time, part_proj_name, part_number, dept, group, op, operator, shift, reason,
+			qty_completed, qty_rejected, qty_scrapped, qty_accepted, ftq, ppm
 		from prod_report_hist
 	</sql>
 	
@@ -47,34 +52,44 @@
 		insert into prod_report_hist (
 			<if test="id != null and id != 0">id,</if>
 			<if test="prodDate != null">prod_date,</if>
+			<if test="startTime != null and startTime != ''">start_time,</if>
+			<if test="endTime != null and endTime != ''">end_time,</if>
+			<if test="partProjName != null and partProjName != ''">part_proj_name,</if>
 			<if test="partNumber != null and partNumber != ''">part_number,</if>
-			<if test="prodDept != null and prodDept != ''">prod_dept,</if>
-			<if test="prodSFGroup != null and prodSFGroup != ''">prod_sf_group,</if>
-			<if test="prodSFOp != null and prodSFOp != ''">prod_sf_op,</if>
+			<if test="dept != null and dept != ''">dept,</if>
+			<if test="group != null and group != ''">group,</if>
+			<if test="op != null and op != ''">op,</if>
+			<if test="operator != null and operator != ''">operator,</if>
+			<if test="shift != null and shift != ''">shift,</if>
+			<if test="reason != null and reason != ''">reason,</if>
 			<if test="qtyCompleted != null and qtyCompleted != 0">qty_completed,</if>
 			<if test="qtyRejected != null and qtyRejected != 0">qty_rejected,</if>
 			<if test="qtyScrapped != null and qtyScrapped != 0">qty_scrapped,</if>
 			<if test="qtyAccepted != null and qtyAccepted != ''">qty_accepted,</if>
-			<if test="operator != null and operator != ''">operator,</if>
-			<if test="shift != null and shift != ''">shift,</if>
 			<if test="ppm != null">ppm,</if>
 			<if test="ftq != null">ftq,</if>
+			report_date,
 			create_time
 		) values (
 			<if test="id != null and id != 0">#{id},</if>
 			<if test="prodDate != null">#{prodDate},</if>
+			<if test="startTime != null and startTime != ''">#{startTime},</if>
+			<if test="endTime != null and endTime != ''">#{endTime},</if>
+			<if test="partProjName != null and partProjName != ''">#{partProjName},</if>
 			<if test="partNumber != null and partNumber != ''">#{partNumber},</if>
-			<if test="prodDept != null and prodDept != ''">#{prodDept},</if>
-			<if test="prodSFGroup != null and prodSFGroup != ''">#{prodSFGroup},</if>
-			<if test="prodSFOp != null and prodSFOp != ''">#{prodSFOp},</if>
+			<if test="dep != null and dept != ''">#{dept},</if>
+			<if test="group != null and group != ''">#{group},</if>
+			<if test="op != null and op != ''">#{op},</if>
+			<if test="operator != null and operator != ''">#{operator},</if>
+			<if test="shift != null and shift != ''">#{shift},</if>
+			<if test="reason != null and reason != ''">#{reason},</if>
 			<if test="qtyCompleted != null and qtyCompleted != 0">#{qtyCompleted},</if>
 			<if test="qtyRejected != null and qtyRejected != 0">#{qtyRejected},</if>
 			<if test="qtyScrapped != null and qtyScrapped != 0">#{qtyScrapped},</if>
 			<if test="qtyAccepted != null and qtyAccepted != ''">#{qtyAccepted},</if>
-			<if test="operator != null and operator != ''">#{operator},</if>
-			<if test="shift != null and shift != ''">#{shift},</if>
 			<if test="ppm != null">#{ppm},</if>
 			<if test="ftq != null">#{ftq},</if>
+			sysdate(),
 			sysdate()
 		)
 	</insert>
@@ -84,18 +99,23 @@
 		<set>
 			<if test="id != null and id != 0">id = #{id},</if>
 			<if test="prodDate != null">prod_date = #{prodDate},</if>
+			report_date = sysdate(),
+			<if test="startTime != null and startTime != ''">start_time = #{startTime},</if>
+			<if test="endTime != null and endTime != ''">end_time = #{endTime},</if>
+			<if test="partProjName != null and partProjName != ''">part_proj_name = #{partProjName},</if>
 			<if test="partNumber != null and partNumber != ''">part_number = #{partNumber},</if>
-			<if test="prodDept != null and prodDept != ''">prod_dept = #{prodDept},</if>
-			<if test="prodSFGroup != null and prodSFGroup != ''">prod_sf_group = #{prodSFGroup},</if>
-			<if test="prodSFOp != null and prodSFOp != ''">prod_sf_op = #{prodSFOp},</if>
+			<if test="dep != null and dept != ''">dept = #{dept},</if>
+			<if test="group != null and group != ''">group = #{group},</if>
+			<if test="op != null and op != ''">op = #{op},</if>
+			<if test="operator != null and operator != ''">operator = #{operator},</if>
+			<if test="shift != null and shift != ''">shift = #{shift},</if>
+			<if test="reason != null and reason != ''">reason = #{reason},</if>
 			<if test="qtyCompleted != null and qtyCompleted != 0">qty_completed = #{qtyCompleted},</if>
 			<if test="qtyRejected != null and qtyRejected != 0">qty_rejected = #{qtyRejected},</if>
 			<if test="qtyScrapped != null and qtyScrapped != 0">qty_scrapped = #{qtyScrapped},</if>
 			<if test="qtyAccepted != null and qtyAccepted != ''">qty_accepted = #{qtyAccepted},</if>
-			<if test="operator != null and operator != ''">operator = #{operator},</if>
-			<if test="shift != null and shift != ''">shift = #{shift},</if>
-			<if test="ppm != null and ppm != 0">ppm = #{ppm},</if>
-			<if test="ftq != null and ftq != 0">ftq = #{ftq},</if>
+			<if test="ppm != null">ppm = #{ppm},</if>
+			<if test="ftq != null">ftq = #{ftq},</if>
 			update_time = sysdate()
 		</set>
 		where id = #{id}

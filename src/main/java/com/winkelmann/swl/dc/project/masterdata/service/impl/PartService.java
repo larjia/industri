@@ -3,6 +3,7 @@ package com.winkelmann.swl.dc.project.masterdata.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.winkelmann.swl.dc.common.constant.UserConstants;
 import com.winkelmann.swl.dc.common.utils.StringUtils;
@@ -10,7 +11,7 @@ import com.winkelmann.swl.dc.project.masterdata.domain.Part;
 import com.winkelmann.swl.dc.project.masterdata.mapper.PartMapper;
 import com.winkelmann.swl.dc.project.masterdata.service.IPartService;
 
-
+@Service
 public class PartService implements IPartService
 {
 	@Autowired
@@ -37,9 +38,9 @@ public class PartService implements IPartService
 	@Override
 	public String checkPartNumberUnique(Part part)
 	{
-		Long id = StringUtils.isNull(part.getPartId()) ? -1L : part.getPartId();
+		Long id = StringUtils.isNull(part.getId()) ? -1L : part.getId();
 		Part info =  partMapper.checkPartNumberUnique(part.getPartNumber());
-		if (StringUtils.isNotNull(info) && info.getPartId() != id.longValue())
+		if (StringUtils.isNotNull(info) && info.getId() != id.longValue())
 		{
 			return UserConstants.NOT_UNIQUE;
 		}

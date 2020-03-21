@@ -740,7 +740,7 @@ insert into prod_shop_floor_operation values (102,  '下料+外观检验', 100, 
 -- ----------------------------
 drop table if exists part;
 create table part (
-  part_id          bigint(20)      not null auto_increment    comment '物料id',
+  id               bigint(20)      not null auto_increment    comment '物料id',
   part_number      varchar(20)     default ''                 comment '物料编码',
   part_desc        varchar(60)     default ''                 comment '物料描述',
   part_desc2       varchar(60)     default 0                  comment '物料描述2',
@@ -750,7 +750,7 @@ create table part (
   create_time 	   datetime                                   comment '创建时间',
   update_by        varchar(64)     default ''                 comment '更新者',
   update_time      datetime                                   comment '更新时间',
-  primary key (part_id)
+  primary key (id)
 ) engine=innodb auto_increment=200 comment = '物料表';
 
 -- ----------------------------
@@ -777,16 +777,22 @@ drop table if exists prod_report_hist;
 create table prod_report_hist (
   id          bigint(20)      not null auto_increment    comment 'id',
   prod_date       datetime                 					 comment '生产日期',
+  start_time	  varchar(10)	  default ''                 comment '开始时间',
+  end_time	      varchar(10)	  default ''                 comment '结束时间',
+  part_proj_name  varchar(60)     default ''				 comment '产品名称',
   part_number     varchar(20)     default ''                 comment '物料编码',
-  prod_dept       varchar(30)     default ''                 comment '生产车间',
-  prod_sf_group   varchar(60)     default ''                 comment '车间班组',
-  prod_sf_op      varchar(60)     default ''                 comment '工序',
+  component_name  varchar(60)     default ''				 comment '零件名称',
+  serialNumber    varchar(20)     default ''                 comment '批序号',
+  dept            varchar(30)     default ''                 comment '生产车间',
+  `group`         varchar(60)     default ''                 comment '车间班组',
+  op              varchar(60)     default ''                 comment '工序',
+  operator        varchar(60)     default ''                 comment '操作员',
   shift           char(1)         default '0'                comment '班次(0白班 1夜班)',
+  reason          varchar(120)    default ''                 comment '不良原因',
   qty_completed   int			  default 0					 comment '完成数',
   qty_rejected    int			  default 0					 comment '不良数',
   qty_scrapped    int			  default 0					 comment '报废数',
   qty_accepted    int			  default 0					 comment '合格数',
-  operator        varchar(60)     default ''                 comment '员工操作员',
   ftq             double(16,4)                               comment 'FQT',
   ppm             double(16,2)                               comment 'PPM',
   create_by       varchar(64)     default ''                 comment '创建者',
@@ -801,15 +807,15 @@ create table prod_report_hist (
 -- ----------------------------
 
 -- demo data
-insert into prod_report_hist values (100, '2020-02-26', '2300260008', '高压车间', '压装焊接班', '压装', '0', 900, 0, 0, 900, '金学枝', 1, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
-insert into prod_report_hist values (101, '2020-02-26', '2300260008', '高压车间', '压装焊接班', '压装', '1', 300, 0, 0, 300, '邓小红', 1, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
-insert into prod_report_hist values (102, '2020-02-26', '2300260008', '高压车间', '压装焊接班', '激光焊', '0', 650, 0, 0, 650, '金学枝', 1, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
-insert into prod_report_hist values (103, '2020-02-26', '2300260008', '高压车间', '压装焊接班', '激光焊', '1', 550, 0, 0, 550, '邓小红', 1, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
-insert into prod_report_hist values (104, '2020-02-26', '2300260008', '高压车间', '检验班', '综检', '0', 180, 5, 0, 175, '袁芳', 0.9722, 27778, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
-insert into prod_report_hist values (105, '2020-02-26', '2300020046', '高压车间', '检验班', '综检', '1', 590, 0, 0, 590, '杨芹', 1, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
-insert into prod_report_hist values (106, '2020-02-26', '2300020046', '高压车间', '包装入库班', '包装', '0', 540, 0, 0, 540, '金学枝', 1, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
-insert into prod_report_hist values (107, '2020-02-26', '2300020046', '高压车间', '压装焊接班', '压装', '0', 480, 0, 0, 480, '杨芹', 1, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
-insert into prod_report_hist values (108, '2020-02-26', '2300020046', '高压车间', '压装焊接班', '压装', '1', 300, 0, 0, 300, '杨芹', 1, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
-insert into prod_report_hist values (109, '2020-02-26', '2300020046', '高压车间', '压装焊接班', '激光焊', '0', 180, 0, 0, 180, '袁芳', 1, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
-insert into prod_report_hist values (110, '2020-02-26', '2300020046', '高压车间', '压装焊接班', '激光焊', '1', 450, 0, 0, 450, '袁芳', 1, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_report_hist values (100, '2020-02-26', '06:00', '15:00', 'F662 (FORD  FEU)', '2300010127', '支架块', '20200321', '高压车间', '压装焊接班', '压装', '金学枝', '0', '', 900, 0, 0, 900, 1, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_report_hist values (101, '2020-02-26', '06:00', '15:00', 'F662 (FORD  FEU)', '2300010127', '支架块', '20200321', '高压车间', '压装焊接班', '压装', '邓小红', '1', '', 300, 0, 0, 300, 1, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_report_hist values (102, '2020-02-26', '06:00', '15:00', 'F662 (FORD  FEU)', '2300010127', '支架块', '20200321', '高压车间', '压装焊接班', '激光焊', '金学枝', '0', '', 650, 0, 0, 650, 1, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_report_hist values (103, '2020-02-26', '06:00', '15:00', 'F662 (FORD  FEU)', '2300010127', '支架块', '20200321', '高压车间', '压装焊接班', '激光焊', '邓小红', '1', '', 550, 0, 0, 550, 1, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_report_hist values (104, '2020-02-26', '06:00', '15:00', 'F662 (FORD  FEU)', '2300010127', '支架板', '20200321', '高压车间', '检验班', '综检', '袁芳', '0', '支架板、支架块孔距不良', 180, 5, 0, 175, 0.9722, 27778, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_report_hist values (105, '2020-02-26', '06:00', '15:00', 'PSA-EB2GDI KVS', '2300240004', '管接头', '20200321', '高压车间', '检验班', '综检', '杨芹', '1', '管接头轮廓度不良', 590, 0, 0, 590, 1, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_report_hist values (106, '2020-02-26', '06:00', '15:00', 'PSA-EB2GDI KVS', '2300240004', '支架块', '20200321', '高压车间', '包装入库班', '包装', '金学枝', '0', '', 540, 0, 0, 540, 1, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_report_hist values (107, '2020-02-26', '06:00', '15:00', 'PSA-EB2GDI KVS', '2300240004', '支架块', '20200321', '高压车间', '压装焊接班', '压装', '杨芹', '0', '', 480, 0, 0, 480, 1, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_report_hist values (108, '2020-02-26', '06:00', '15:00', 'PSA-EB2GDI KVS', '2300240004', '支架块', '20200321', '高压车间', '压装焊接班', '压装', '杨芹', '1', '', 300, 0, 0, 300, 1, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_report_hist values (109, '2020-02-26', '06:00', '15:00', 'PSA-EB2GDI KVS', '2300240004', '支架块', '20200321', '高压车间', '压装焊接班', '激光焊', '袁芳', '0', '', 180, 0, 0, 180, 1, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_report_hist values (110, '2020-02-26', '06:00', '15:00', 'PSA-EB2GDI KVS', '2300240004', '支架块', '20200321', '高压车间', '压装焊接班', '激光焊', '袁芳', '1', '', 450, 0, 0, 450, 1, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
 

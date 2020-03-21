@@ -17,14 +17,32 @@ public class ProdReportHist extends BaseEntity
 	private Long id;
 	// 生产日期
 	private Date prodDate;
-	// 物料名称
+	// 填报日期
+	private Date reportDate;
+	// 生产开始时间
+	private String startTime;
+	// 生产结束时间
+	private String endTime;
+	// 产品名称(物料项目名称)
+	private String partProjName;
+	// 物料号号(ERP编码)
 	private String partNumber;
+	// 零件名称
+	private String componentName;
+	// 批序号
+	private String serialNumber;
 	// 车间部门
-	private String prodDept;
+	private String dept;
 	// 班组
-	private String prodSFGroup;
+	private String group;
 	// 工序
-	private String prodSFOp;
+	private String op;
+	// 操作员
+	private String operator;
+	// 班次 0白班 1夜班
+	private String shift;
+	// 不良原因
+	private String reason;
 	// 完成数
 	private Integer qtyCompleted;
 	// 不良数
@@ -33,10 +51,6 @@ public class ProdReportHist extends BaseEntity
 	private Integer qtyScrapped;
 	// 合格数
 	private Integer qtyAccepted;
-	// 员工操作员
-	private String operator;
-	// 班次 0白班 1夜班
-	private String shift;
 	// FTQ
 	private Double ftq;
 	// PPM
@@ -76,34 +90,34 @@ public class ProdReportHist extends BaseEntity
 		this.partNumber = partNumber;
 	}
 
-	public String getProdDept()
+	public String getDept()
 	{
-		return prodDept;
+		return dept;
 	}
 
-	public void setProdDept(String prodDept)
+	public void setDept(String dept)
 	{
-		this.prodDept = prodDept;
+		this.dept = dept;
 	}
 
-	public String getProdSFGroup()
+	public String getGroup()
 	{
-		return prodSFGroup;
+		return group;
 	}
 
-	public void setProdSFGroup(String prodSFGroup)
+	public void setGroup(String group)
 	{
-		this.prodSFGroup = prodSFGroup;
+		this.group = group;
 	}
 
-	public String getProdSFOp()
+	public String getOp()
 	{
-		return prodSFOp;
+		return op;
 	}
 
-	public void setProdSFOp(String prodSFOp)
+	public void setOp(String op)
 	{
-		this.prodSFOp = prodSFOp;
+		this.op = op;
 	}
 
 	public Integer getQtyCompleted()
@@ -185,4 +199,75 @@ public class ProdReportHist extends BaseEntity
 	{
 		this.operator = operator;
 	}
+
+	public Date getReportDate()
+	{
+		return reportDate;
+	}
+
+	public void setReportDate(Date reportDate)
+	{
+		this.reportDate = reportDate;
+	}
+
+	public String getStartTime()
+	{
+		return startTime;
+	}
+
+	public void setStartTime(String startTime)
+	{
+		this.startTime = startTime;
+	}
+
+	public String getEndTime()
+	{
+		return endTime;
+	}
+
+	public void setEndTime(String endTime)
+	{
+		this.endTime = endTime;
+	}
+
+	public String getPartProjName()
+	{
+		return partProjName;
+	}
+
+	public void setPartProjName(String partProjName)
+	{
+		this.partProjName = partProjName;
+	}
+
+	public String getComponentName()
+	{
+		return componentName;
+	}
+
+	public void setComponentName(String componentName)
+	{
+		this.componentName = componentName;
+	}
+
+	public String getSerialNumber()
+	{
+		return serialNumber;
+	}
+
+	public void setSerialNumber(String serialNumber)
+	{
+		this.serialNumber = serialNumber;
+	}
+
+	public String getReason()
+	{
+		return reason;
+	}
+
+	public void setReason(String reason)
+	{
+		this.reason = reason;
+	}
+	
 }
