@@ -3,6 +3,7 @@ package com.winkelmann.swl.dc.project.production.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.winkelmann.swl.dc.common.constant.UserConstants;
 import com.winkelmann.swl.dc.common.utils.StringUtils;
@@ -10,6 +11,7 @@ import com.winkelmann.swl.dc.project.production.domain.ProdOpRejectReason;
 import com.winkelmann.swl.dc.project.production.mapper.ProdOpRejectReasonMapper;
 import com.winkelmann.swl.dc.project.production.service.IProdOpRejectReasonService;
 
+@Service
 public class ProdOpRejectReasonService implements IProdOpRejectReasonService
 {
 	@Autowired

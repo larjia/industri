@@ -29,7 +29,7 @@ import com.winkelmann.swl.dc.project.production.service.IProdSFGroupService;
  *
  */
 @RestController
-@RequestMapping("/production/shopfloor/group")
+@RequestMapping("/production/sf/group")
 public class ProdSFGroupController extends BaseController
 {
 	@Autowired

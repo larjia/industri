@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.winkelmann.swl.dc.project.production.mapper.ProdOpRejectReason">
+<mapper namespace="com.winkelmann.swl.dc.project.production.mapper.ProdOpRejectReasonMapper">
 	<resultMap type="ProdOpRejectReason" 	id="ProdOpeRejectReasonResult">
 		<id		property="id"			column="id"			/>
 		<result property="opId"			column="op_id"		/>
@@ -20,7 +20,7 @@
 		</where>
 	</select>
 	
-	<select id="checkReasonNameUnique" resultMap="ProdOpRejectReason">
+	<select id="checkReasonNameUnique" resultMap="ProdOpeRejectReasonResult">
 		<include refid="selectProdOpRejectReasonVo" />
 		where reason = #{reason} and op_id = #{opId}
 	</select>

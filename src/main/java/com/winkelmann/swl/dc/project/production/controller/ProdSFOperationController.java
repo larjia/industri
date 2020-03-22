@@ -29,7 +29,7 @@ import com.winkelmann.swl.dc.project.production.service.IProdSFOperationService;
  *
  */
 @RestController
-@RequestMapping("/production/shopfloor/operation")
+@RequestMapping("/production/sf/operation")
 public class ProdSFOperationController extends BaseController
 {
 	@Autowired

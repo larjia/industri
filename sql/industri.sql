@@ -906,8 +906,8 @@ insert into prod_op_reject_reason values (114, 108, '其他', 'admin', '2020-03-
 insert into prod_op_reject_reason values (115, 108, '钢印号不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
 insert into prod_op_reject_reason values (116, 108, '管接头损伤', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
 insert into prod_op_reject_reason values (117, 108, '二维码不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
-insert into prod_op_reject_reason values (118, 108, '装配点胶', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
-insert into prod_op_reject_reason values (119, 108, '外观检', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (118, 108, '装配点胶不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (119, 108, '外观检不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
 
 insert into prod_op_reject_reason values (120, 109, 'EV座轮廓度不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
 insert into prod_op_reject_reason values (121, 109, 'EV座位置度不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
