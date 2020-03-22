@@ -42,7 +42,7 @@ public class ProdReportHist extends BaseEntity
 	// 班次 0白班 1夜班
 	private String shift;
 	// 不良原因
-	private String reason;
+	private String rejectReason;
 	// 完成数
 	private Integer qtyCompleted;
 	// 不良数
@@ -260,14 +260,14 @@ public class ProdReportHist extends BaseEntity
 		this.serialNumber = serialNumber;
 	}
 
-	public String getReason()
+	public String getRejectReason()
 	{
-		return reason;
+		return rejectReason;
 	}
 
-	public void setReason(String reason)
+	public void setRejectReason(String rejectReason)
 	{
-		this.reason = reason;
+		this.rejectReason = rejectReason;
 	}
 	
 }

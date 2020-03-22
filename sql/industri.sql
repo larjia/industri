@@ -526,12 +526,12 @@ insert into sys_dict_data values(27, 1,  '成功',     '0',       'sys_common_st
 insert into sys_dict_data values(28, 2,  '失败',     '1',       'sys_common_status',   '',   'danger',  'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '停用状态');
 
 insert into sys_dict_data values(51, 1,  'EV座',     '1',       'prod_component_name', '',   '',        'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '');
-insert into sys_dict_data values(52, 2,  '支架块',    '1',       'prod_component_name', '',   '',        'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '');
-insert into sys_dict_data values(53, 3,  '支架板',    '1',       'prod_component_name', '',   '',        'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '');
-insert into sys_dict_data values(54, 4,  '支架杆',    '1',       'prod_component_name', '',   '',        'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '');
-insert into sys_dict_data values(55, 5,  '管接头',    '1',       'prod_component_name', '',   '',        'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '');
-insert into sys_dict_data values(56, 6,  '传感器',    '1',       'prod_component_name', '',   '',        'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '');
-insert into sys_dict_data values(57, 7,  '套筒',      '1',       'prod_component_name', '',   '',        'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '');
+insert into sys_dict_data values(52, 2,  '支架块',    '2',       'prod_component_name', '',   '',        'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '');
+insert into sys_dict_data values(53, 3,  '支架板',    '3',       'prod_component_name', '',   '',        'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '');
+insert into sys_dict_data values(54, 4,  '支架杆',    '4',       'prod_component_name', '',   '',        'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '');
+insert into sys_dict_data values(55, 5,  '管接头',    '5',       'prod_component_name', '',   '',        'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '');
+insert into sys_dict_data values(56, 6,  '传感器',    '6',       'prod_component_name', '',   '',        'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '');
+insert into sys_dict_data values(57, 7,  '套筒',      '7',       'prod_component_name', '',   '',        'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '');
 
 -- ----------------------------
 -- 13、参数配置表
@@ -843,7 +843,7 @@ create table prod_report_hist (
   op              varchar(60)     default ''                 comment '工序',
   operator        varchar(60)     default ''                 comment '操作员',
   shift           char(1)         default '0'                comment '班次(0白班 1夜班)',
-  reason          varchar(120)    default ''                 comment '不良原因',
+  reject_reason   varchar(120)    default ''                 comment '不良原因',
   qty_completed   int			  default 0					 comment '完成数',
   qty_rejected    int			  default 0					 comment '不良数',
   qty_scrapped    int			  default 0					 comment '报废数',
