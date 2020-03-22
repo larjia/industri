@@ -113,8 +113,8 @@
 			<if test="partProjName != null and partProjName != ''">part_proj_name = #{partProjName},</if>
 			<if test="partNumber != null and partNumber != ''">part_number = #{partNumber},</if>
 			<if test="componentName != null and componentName != ''">component_name = #{componentName},</if>
-			<if test="serialNumber != null and serialNumber != ''">serialNumber = #{serialNumber},</if>
-			<if test="dep != null and dept != ''">dept = #{dept},</if>
+			<if test="serialNumber != null and serialNumber != ''">serial_number = #{serialNumber},</if>
+			<if test="dept != null and dept != ''">dept = #{dept},</if>
 			<if test="group != null and group != ''">`group` = #{group},</if>
 			<if test="op != null and op != ''">op = #{op},</if>
 			<if test="operator != null and operator != ''">operator = #{operator},</if>

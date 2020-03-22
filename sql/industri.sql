@@ -159,7 +159,7 @@ create table sys_menu (
 -- 初始化-菜单信息表数据
 -- ----------------------------
 -- 一级菜单
-insert into sys_menu values('1', '系统管理', '0', '1', 'system',           null,   1, 'M', '0', '', 'system',   'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '系统管理目录');
+insert into sys_menu values('1', '系统管理', '0', '1', 'system',           null,   1, 'M', '1', '', 'system',   'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '系统管理目录');
 insert into sys_menu values('2', '系统监控', '0', '2', 'monitor',          null,   1, 'M', '1', '', 'monitor',  'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '系统监控目录');
 insert into sys_menu values('3', '系统工具', '0', '3', 'tool',             null,   1, 'M', '1', '', 'tool',     'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '系统工具目录');
 -- insert into sys_menu values('4', '若依官网', '0', '4', 'http://ruoyi.vip', null ,  0, 'M', '0', '', 'guide',    'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '若依官网地址');
