@@ -10,7 +10,9 @@
 		<result property="endTime"			column="end_time"			/>
 		<result property="partProjName"		column="part_proj_name"		/>
 		<result property="partNumber"		column="part_number"		/>
-		<result	property="dep"				column="dept"				/>
+		<result property="componentName"	column="component_name"		/>
+		<result property="serialNumber"		column="serial_number"		/>
+		<result	property="dept"				column="dept"				/>
 		<result	property="group"			column="group"				/>
 		<result	property="op"				column="op"					/>
 		<result	property="operator"			column="operator"			/>
@@ -25,7 +27,7 @@
 	</resultMap>
 	
 	<sql id="selectProdReportHistVo">
-		select id, prod_date, report_date, start_time, end_time, part_proj_name, part_number, dept, group, op, operator, shift, reason,
+		select id, prod_date, report_date, start_time, end_time, part_proj_name, part_number, component_name, serial_number, dept, `group`, op, operator, shift, reason,
 			qty_completed, qty_rejected, qty_scrapped, qty_accepted, ftq, ppm
 		from prod_report_hist
 	</sql>
@@ -57,7 +59,7 @@
 			<if test="partProjName != null and partProjName != ''">part_proj_name,</if>
 			<if test="partNumber != null and partNumber != ''">part_number,</if>
 			<if test="dept != null and dept != ''">dept,</if>
-			<if test="group != null and group != ''">group,</if>
+			<if test="group != null and group != ''">`group`,</if>
 			<if test="op != null and op != ''">op,</if>
 			<if test="operator != null and operator != ''">operator,</if>
 			<if test="shift != null and shift != ''">shift,</if>
@@ -105,7 +107,7 @@
 			<if test="partProjName != null and partProjName != ''">part_proj_name = #{partProjName},</if>
 			<if test="partNumber != null and partNumber != ''">part_number = #{partNumber},</if>
 			<if test="dep != null and dept != ''">dept = #{dept},</if>
-			<if test="group != null and group != ''">group = #{group},</if>
+			<if test="group != null and group != ''">`group` = #{group},</if>
 			<if test="op != null and op != ''">op = #{op},</if>
 			<if test="operator != null and operator != ''">operator = #{operator},</if>
 			<if test="shift != null and shift != ''">shift = #{shift},</if>
