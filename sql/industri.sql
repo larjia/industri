@@ -873,3 +873,66 @@ insert into prod_report_hist values (108, '2020-02-26', '06:00', '15:00', 'PSA-E
 insert into prod_report_hist values (109, '2020-02-26', '06:00', '15:00', 'PSA-EB2GDI KVS', '2300240004', '支架块', '20200321', '高压车间', '压装焊接班', '激光焊', '袁芳', '0', '', 180, 0, 0, 180, 1, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
 insert into prod_report_hist values (110, '2020-02-26', '06:00', '15:00', 'PSA-EB2GDI KVS', '2300240004', '支架块', '20200321', '高压车间', '压装焊接班', '激光焊', '袁芳', '1', '', 450, 0, 0, 450, 1, 0, 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
 
+-- ----------------------------
+-- 24、工序不良原因表字段
+-- ----------------------------
+drop table if exists prod_op_reject_reason;
+create table prod_op_reject_reason (
+  id          	  bigint(20)      not null auto_increment    comment 'id',
+  op_id       	  bigint(20)                 			     comment '工序id',
+  reason          varchar(250)	  default ''                 comment '原因',
+  create_by       varchar(64)     default ''                 comment '创建者',
+  create_time 	  datetime                                   comment '创建时间',
+  update_by       varchar(64)     default ''                 comment '更新者',
+  update_time     datetime                                   comment '更新时间',
+  primary key (id)
+) engine=innodb auto_increment=200 comment = '工序不良原因表';
+
+insert into prod_op_reject_reason values (100, 108, '管接头铜胶不饱满', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (101, 108, '套筒铜胶不饱满', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (102, 108, '线束支架铜胶不饱满', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (103, 108, '端盖铜胶不饱满', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (104, 108, '加强片铜胶不饱满', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (105, 108, 'EV座铜胶不饱满', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (106, 108, '传感器铜胶不饱满', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (107, 108, '进油管铜胶不饱满', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (108, 108, '支架块铜胶不饱满', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (109, 108, '支架板铜胶不饱满', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (110, 108, '压印', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (111, 108, '拉丝', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (112, 108, '球头针眼', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (113, 108, '铜胶流淌', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (114, 108, '其他', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (115, 108, '钢印号不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (116, 108, '管接头损伤', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (117, 108, '二维码不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (118, 108, '装配点胶', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (119, 108, '外观检', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+
+insert into prod_op_reject_reason values (120, 109, 'EV座轮廓度不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (121, 109, 'EV座位置度不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (122, 109, '支架板、支架块孔距不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (123, 109, '支架板、支架块平面度不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (124, 109, '管接头位置度不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (125, 109, '传感器位置度不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (126, 109, '套筒位置度不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (127, 109, '套筒平面度不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (128, 109, '线束支架位置度不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (129, 109, '支架板摆块不过', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (130, 109, '管接头摆块不过', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (131, 109, '报废', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (132, 109, '止规不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (133, 109, '支架板轮廓度不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (134, 109, '管接头轮廓度不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (135, 109, '支架套筒不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (136, 109, '传感器轮廓度不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (137, 109, '支架杆位置度不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (138, 109, '支架板位置度不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (139, 109, '支架块位置度不良', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (140, 109, '支架块套筒不过', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (141, 109, '支架块轮廓度不过', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (142, 109, '支架块摆块不过', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (143, 109, '线束支架摆块不过', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (144, 109, 'EV座孔距不过', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (145, 109, '检具不过', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
+insert into prod_op_reject_reason values (146, 109, '防护板不过', 'admin', '2020-03-15 23-19-00', 'admin', '2020-03-15 23-19-00');
