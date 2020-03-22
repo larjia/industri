@@ -731,9 +731,10 @@ create table prod_sf_group (
 -- insert into prod_shop_floor_group values (101,  101, '检验班', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
 -- insert into prod_shop_floor_group values (102,  101, '包装入库班', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
 
-insert into prod_sf_group values (100,  101, '钎焊班', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
-insert into prod_sf_group values (101,  101, '检验班', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
-insert into prod_sf_group values (102,  101, '包装入库班', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_sf_group values (100,  101, '压装激光焊班', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_sf_group values (101,  101, '钎焊班',      'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_sf_group values (102,  101, '检验班',      'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_sf_group values (103,  101, '包装入库班',   'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
 
 -- ----------------------------
 -- 21、生产车间班组工序表字段
@@ -755,6 +756,7 @@ create table prod_sf_operation (
   id          			bigint(20)      not null auto_increment    comment '工序id',
   name        			varchar(60)     default ''                 comment '工序名称',
   group_id              bigint(20)      default 0                  comment '车间班组id',
+  need_reason			char(1)         default '0'				   comment '该工序是否需要不良原因0不需要1需要',
   create_by             varchar(64)     default ''                 comment '创建者',
   create_time 	        datetime                                   comment '创建时间',
   update_by             varchar(64)     default ''                 comment '更新者',
@@ -769,9 +771,23 @@ create table prod_sf_operation (
 -- insert into prod_shop_floor_operation values (101,  '钎焊上料', 100, 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
 -- insert into prod_shop_floor_operation values (102,  '下料+外观检验', 100, 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
 
-insert into prod_sf_operation values (100,  '点胶', 100, 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
-insert into prod_sf_operation values (101,  '钎焊上料', 100, 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
-insert into prod_sf_operation values (102,  '下料+外观检验', 100, 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_sf_operation values (100,  '压装',       100, '0', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_sf_operation values (101,  '凸焊',       100, '0', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_sf_operation values (102,  '激光焊',      100, '0', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_sf_operation values (103,  '机器人一',    100, '0', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_sf_operation values (104,  '机器人二',    100, '0', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_sf_operation values (105,  '机器人三',    100, '0', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_sf_operation values (106,  '点(补)胶',    101, '0', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_sf_operation values (107,  '钎焊上料',    101, '0', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_sf_operation values (108,  '下料外观检验', 101, '1', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_sf_operation values (109,  '综检',        102, '1', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_sf_operation values (110,  '气密',        102, '0', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_sf_operation values (111,  '导通',        102, '0', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_sf_operation values (112,  '装传感器',    102, '0', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_sf_operation values (113,  '氦检贴标签',  102, '0', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_sf_operation values (114,  '全检打钢印',  102, '0', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+insert into prod_sf_operation values (115,  '包装',       103, '0', 'admin', '2020-03-11 11-33-00', 'admin', '2020-03-11 11-33-00');
+
 
 -- ----------------------------
 -- 22、物料表字段

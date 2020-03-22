@@ -15,6 +15,8 @@ public class ProdSFOperation extends BaseEntity
 	private Long id;
 	// 工序名称
 	private String name;
+	// 不良是否需要原因0不需要1需要
+	private String needReason;
 	// 班组Id
 	private Long groupId;
 	// 班组对象
@@ -63,5 +65,14 @@ public class ProdSFOperation extends BaseEntity
 	{
 		this.group = group;
 	}
-	
+
+	public String getNeedReason()
+	{
+		return needReason;
+	}
+
+	public void setNeedReason(String needReason)
+	{
+		this.needReason = needReason;
+	}
 }

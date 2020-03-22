@@ -5,6 +5,7 @@
 	<resultMap type="ProdSFOperation" id="ProdSFOperationResult">
 		<id				property="id"				column="id"					/>
 		<result 		property="name"				column="name"				/>
+		<result			property="needReason"		column="need_reason"		/>
 		<result 		property="createTime"		column="create_time"		/>
 		<result 		property="groupId"			column="group_id"			/>
 		<association 	property="group"			column="group_id"	javaType="ProdSFGroup"	resultMap="groupResult" />
@@ -22,7 +23,7 @@
 	</resultMap>
 	
 	<sql id="selectOperationVo">
-		select sfo.id, sfo.name, sfo.group_id, sfo.create_time, sfg.id gid, sfg.name group_name, d.dept_id, d.dept_name
+		select sfo.id, sfo.name, sfo.need_reason, sfo.group_id, sfo.create_time, sfg.id gid, sfg.name group_name, d.dept_id, d.dept_name
 		from prod_sf_operation sfo
 			left join prod_sf_group sfg on sfo.group_id = sfg.id
 			left join sys_dept d on sfg.dept_id = d.dept_id
@@ -54,12 +55,14 @@
 		insert into prod_sf_operation (
 			<if test="id != null and id != 0">id,</if>
 			<if test="name != null and name != ''">name,</if>
+			<if test="needReason != null and needReason != ''">need_reason,</if>
 			<if test="groupId != null and groupId != 0">group_id,</if>
 			<if test="createBy != null and createBy != ''">create_by,</if>
 			create_time
 		) values (
 			<if test="id != null and id != ''">#{id},</if>
 			<if test="name != null and name != ''">#{name},</if>
+			<if test="needReason != null and needReason != ''">#{needReason},</if>
 			<if test="groupId != null and groupId != ''">#{groupId},</if>
 			<if test="createBy != null and createBy != ''">#{createBy},</if>
 			sysdate()
@@ -71,6 +74,7 @@
 		<set>
 			<if test="id != null and id != 0">id = #{id},</if>
 			<if test="name != null and name != ''">name = #{name},</if>
+			<if test="needReason != null and needReason != ''">need_reason = #{needReason},</if>
 			<if test="groupId != null and groupId != 0">group_id = #{groupId},</if>
 			<if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
 			update_time = sysdate()
