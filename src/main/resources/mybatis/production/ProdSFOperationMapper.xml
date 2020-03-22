@@ -7,13 +7,13 @@
 		<result 		property="name"				column="name"				/>
 		<result 		property="createTime"		column="create_time"		/>
 		<result 		property="groupId"			column="group_id"			/>
-		<association 	property="group"			column="group_id"	javaType="ProdShopFloorGroup"	resultMap="groupResult" />
+		<association 	property="group"			column="group_id"	javaType="ProdSFGroup"	resultMap="groupResult" />
 	</resultMap>
 	
 	<resultMap id="groupResult" type="ProdSFGroup">
-		<id			 property="groupId"		column="group_id" 		/>
-		<result 	 property="groupName"	column="group_name" 	/>
-		<association property="dept" 	column="dept_id" 	javaType="SysDept" resultMap="deptResult" />
+		<id			 property="id"			column="gid" 			/>
+		<result 	 property="name"		column="group_name" 	/>
+		<association property="dept" 		column="dept_id" 	javaType="SysDept" resultMap="deptResult" />
 	</resultMap>
 	
 	<resultMap id="deptResult" type="SysDept">
@@ -22,10 +22,9 @@
 	</resultMap>
 	
 	<sql id="selectOperationVo">
-		select sfo.id, sfo.name, sfo.group_id, sfo.create_time, sfg.group_id, sfg.name,
-			d.dept_id, d.dept_name
+		select sfo.id, sfo.name, sfo.group_id, sfo.create_time, sfg.id gid, sfg.name group_name, d.dept_id, d.dept_name
 		from prod_sf_operation sfo
-			left join prod_sf_group sfg on sfo.id = sfg.id
+			left join prod_sf_group sfg on sfo.group_id = sfg.id
 			left join sys_dept d on sfg.dept_id = d.dept_id
 	</sql>
 	

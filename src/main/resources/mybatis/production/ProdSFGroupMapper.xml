@@ -14,14 +14,14 @@
 		<result property="deptName"		column="dept_name"	/>
 	</resultMap>
 	
-	<sql id="selectSFGroupVo">
+	<sql id="selectGroupVo">
 		select sfg.id, sfg.name, sfg.dept_id, d.dept_id, d.dept_name
 		from prod_sf_group sfg
 			left join sys_dept d on sfg.dept_id = d.dept_id
 	</sql>
 	
-	<select id="selectSFGroupList" parameterType="ProdSFGroup" resultMap="ProdSFGroupResult">
-		<include refid="selectSFGroupVo"/>
+	<select id="selectGroupList" parameterType="ProdSFGroup" resultMap="ProdSFGroupResult">
+		<include refid="selectGroupVo"/>
 		<where>
 			<if test="name != null and name != ''">
 				AND sfg.name like concat('%', #{name}, '%')
@@ -32,17 +32,17 @@
 		</where>
 	</select>
 	
-	<select id="selectShopFloorGroupById" parameterType="Long" resultMap="ProdShopFloorGroupResult">
-		<include refid="selectShopFloorGroupVo"/>
-		where sfg.group_id = #{groupId}
+	<select id="selectGroupById" parameterType="Long" resultMap="ProdSFGroupResult">
+		<include refid="selectGroupVo"/>
+		where sfg.id = #{id}
 	</select>
 	
 	<select id="checkGroupNameUnique" resultMap="ProdSFGroupResult">
-		<include refid="selectSFGroupVo"/>
+		<include refid="selectGroupVo"/>
 		where sfg.name = #{name} and sfg.dept_id = #{deptId}
 	</select>
 	
-	<insert id="insertSFGroup" parameterType="ProdSFGroup" useGeneratedKeys="true" keyProperty="id">
+	<insert id="insertGroup" parameterType="ProdSFGroup" useGeneratedKeys="true" keyProperty="id">
 		insert into prod_sf_group (
 			<if test="id != null and id != 0">id,</if>
 			<if test="name != null and name != ''">name,</if>
@@ -58,18 +58,18 @@
 		)
 	</insert>
 	
-	<update id="updateSFGroup" parameterType="ProdSFGroup">
+	<update id="updateGroup" parameterType="ProdSFGroup">
 		update prod_sf_group
 		<set>
-			<if test="groupId != null and groupId != 0">group_id = #{groupId},</if>
-			<if test="groupName != null and groupName != ''">group_name = #{groupName},</if>
+			<if test="id != null and id != 0">id = #{id},</if>
+			<if test="name != null and name != ''">name = #{name},</if>
 			<if test="deptId != null and deptId != 0">dept_id = #{deptId},</if>
 			update_time = sysdate()
 		</set>
-		where group_id = #{groupId}
+		where id = #{id}
 	</update>
 	
-	<delete id="deleteSFGroupById" parameterType="Long">
+	<delete id="deleteGroupById" parameterType="Long">
  		delete from prod_sf_group where id = #{id}
  	</delete>
 </mapper>
