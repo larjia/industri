@@ -19,11 +19,11 @@ public class ProdReportHist extends BaseEntity
 	private Long id;
 	
 	// 生产日期
-	@Excel(name = "生产日期")
+	@Excel(name = "生产日期", dateFormat = "yyyy-MM-dd")
 	private Date prodDate;
 	
 	// 填报日期
-	@Excel(name = "填报日期")
+	@Excel(name = "填报日期", dateFormat = "yyyy-MM-dd")
 	private Date reportDate;
 	
 	// 生产开始时间
