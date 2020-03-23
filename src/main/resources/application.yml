@@ -9,8 +9,9 @@ dc:
   # 实例演示开关
   demoEnabled: true
   # 文件路径 示例 (windows配置D:/ruoyi/uploadPath linux配置/home/ruoyi/uploadPath)
-  #profile: D:/ruoyi/uploadPath
-  profile: C:/datacenter/uploadPath
+  # profile: D:/projects/uploadPath
+  profile: C:/datacenter/files
+  # profile: C:/datacenter/uploadPath
   # 获取ip地址开关
   addressEnabled: false
 

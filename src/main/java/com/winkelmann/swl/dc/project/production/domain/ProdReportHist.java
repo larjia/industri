@@ -2,6 +2,8 @@ package com.winkelmann.swl.dc.project.production.domain;
 
 import java.sql.Date;
 
+import com.winkelmann.swl.dc.framework.aspectj.lang.annotation.Excel;
+import com.winkelmann.swl.dc.framework.aspectj.lang.annotation.Excel.ColumnType;
 import com.winkelmann.swl.dc.framework.web.domain.BaseEntity;
 
 /**
@@ -15,45 +17,85 @@ public class ProdReportHist extends BaseEntity
 	
 	// Id
 	private Long id;
+	
 	// 生产日期
+	@Excel(name = "生产日期")
 	private Date prodDate;
+	
 	// 填报日期
+	@Excel(name = "填报日期")
 	private Date reportDate;
+	
 	// 生产开始时间
+	@Excel(name = "开始时间")
 	private String startTime;
+	
 	// 生产结束时间
+	@Excel(name = "结束日期")
 	private String endTime;
+	
 	// 产品名称(物料项目名称)
+	@Excel(name = "产品名称")
 	private String partProjName;
+	
 	// 物料号号(ERP编码)
+	@Excel(name = "物料号")
 	private String partNumber;
+	
 	// 零件名称
+	@Excel(name = "零件名称")
 	private String componentName;
+	
 	// 批序号
+	@Excel(name = "批序号")
 	private String serialNumber;
+	
 	// 车间部门
+	@Excel(name = "车间部门")
 	private String dept;
+	
 	// 班组
+	@Excel(name = "车间班组")
 	private String group;
+	
 	// 工序
+	@Excel(name = "工序")
 	private String op;
+	
 	// 操作员
+	@Excel(name = "操作员")
 	private String operator;
+	
 	// 班次 0白班 1夜班
+	@Excel(name = "班次", readConverterExp = "0=白班,1=夜班")
 	private String shift;
+	
 	// 不良原因
+	@Excel(name = "不良原因")
 	private String rejectReason;
+	
 	// 完成数
+	@Excel(name = "完成数", cellType = ColumnType.NUMERIC)
 	private Integer qtyCompleted;
+	
 	// 不良数
+	@Excel(name = "不良数", cellType = ColumnType.NUMERIC)
 	private Integer qtyRejected;
+	
 	// 报废数
+	@Excel(name = "报废数", cellType = ColumnType.NUMERIC)
 	private Integer qtyScrapped;
+	
 	// 合格数
+	@Excel(name = "合格数", cellType = ColumnType.NUMERIC)
 	private Integer qtyAccepted;
+	
 	// FTQ
+	@Excel(name = "FTQ", cellType = ColumnType.NUMERIC)
 	private Double ftq;
+	
 	// PPM
+	@Excel(name = "PPM", cellType = ColumnType.NUMERIC)
 	private Double ppm;
 	
 	public ProdReportHist()

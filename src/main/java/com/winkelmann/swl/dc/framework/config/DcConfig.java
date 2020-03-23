@@ -70,7 +70,7 @@ public class DcConfig
 		return profile;
 	}
 	
-	public static void setProfile(String profile)
+	public void setProfile(String profile)
 	{
 		DcConfig.profile = profile;
 	}
@@ -80,7 +80,7 @@ public class DcConfig
 		return addressEnabled;
 	}
 	
-	public static void setAddressEnabled(boolean addressEnabled)
+	public void setAddressEnabled(boolean addressEnabled)
 	{
 		DcConfig.addressEnabled = addressEnabled;
 	}
