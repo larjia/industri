@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.winkelmann.swl.dc.common.utils.SecurityUtils;
+import com.winkelmann.swl.dc.common.utils.poi.ExcelUtil;
 import com.winkelmann.swl.dc.framework.aspectj.lang.annotation.Log;
 import com.winkelmann.swl.dc.framework.aspectj.lang.enums.BusinessType;
 import com.winkelmann.swl.dc.framework.web.controller.BaseController;
@@ -43,6 +44,18 @@ public class ProdReportHistController extends BaseController
 		startPage();
 		List<ProdReportHist> list = prodReportHistService.selectProdReportHistList(reportHist);
 		return getDataTable(list);
+	}
+	
+	/**
+	 * 导出Excel
+	 */
+	@Log(title = "生产报工", businessType = BusinessType.EXPORT)
+	@GetMapping("/export")
+	public AjaxResult export(ProdReportHist reportHist)
+	{
+		List<ProdReportHist> list = prodReportHistService.selectProdReportHistList(reportHist);
+		ExcelUtil<ProdReportHist> util = new ExcelUtil<ProdReportHist>(ProdReportHist.class);
+		return util.exportExcel(list, "生产报工数据");
 	}
 	
 	/**
