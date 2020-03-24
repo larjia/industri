@@ -20,41 +20,48 @@ import com.winkelmann.swl.dc.project.production.service.IProdSFGroupService;
 public class ProdSFGroupService implements IProdSFGroupService
 {
 	@Autowired
-	private ProdSFGroupMapper shopFloorGroupMapper;
+	private ProdSFGroupMapper groupMapper;
 
 	// 查询车间班组数据
 	@Override
 	public List<ProdSFGroup> selectGroupList(ProdSFGroup group)
 	{
-		return shopFloorGroupMapper.selectGroupList(group);
+		return groupMapper.selectGroupList(group);
 	}
 
 	// 根据班组Id查询班组
 	@Override
 	public ProdSFGroup selectGroupById(Long id)
 	{
-		return shopFloorGroupMapper.selectGroupById(id);
+		return groupMapper.selectGroupById(id);
+	}
+	
+	// 根据车间Id查询班组
+	@Override
+	public List<ProdSFGroup> selectGroupByDeptId(Long deptId)
+	{
+		return groupMapper.selectGroupByDeptId(deptId);
 	}
 
 	// 新增车间班组
 	@Override
 	public int insertGroup(ProdSFGroup group)
 	{
-		return shopFloorGroupMapper.insertGroup(group);
+		return groupMapper.insertGroup(group);
 	}
 
 	// 更新班组信息
 	@Override
 	public int updateGroup(ProdSFGroup group)
 	{
-		return shopFloorGroupMapper.updateGroup(group);
+		return groupMapper.updateGroup(group);
 	}
 
 	// 根据Id删除班组信息
 	@Override
 	public int deleteGroupById(Long id)
 	{
-		return shopFloorGroupMapper.deleteGroupById(id);
+		return groupMapper.deleteGroupById(id);
 	}
 
 	// 检验班组名称唯一性
@@ -62,7 +69,7 @@ public class ProdSFGroupService implements IProdSFGroupService
 	public String checkGroupNameUnique(ProdSFGroup group)
 	{
 		Long groupId = StringUtils.isNull(group.getId()) ? -1L : group.getId();
-		ProdSFGroup info = shopFloorGroupMapper.checkGroupNameUnique(group.getName(), group.getDeptId());
+		ProdSFGroup info = groupMapper.checkGroupNameUnique(group.getName(), group.getDeptId());
 		if (StringUtils.isNotNull(info) && info.getDeptId().longValue() != groupId.longValue())
 		{
 			return UserConstants.NOT_UNIQUE;

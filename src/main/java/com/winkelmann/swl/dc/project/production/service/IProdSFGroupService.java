@@ -15,7 +15,9 @@ public interface IProdSFGroupService
 	public List<ProdSFGroup> selectGroupList(ProdSFGroup group);
 	// 根据Id查询班组
 	public ProdSFGroup selectGroupById(Long groupId);
-	// // 校验班组名称是否唯一
+	// 根据车间Id查询班组
+	public List<ProdSFGroup> selectGroupByDeptId(Long deptId);
+	// 校验班组名称是否唯一
 	public String checkGroupNameUnique(ProdSFGroup group);
 	// 新增班组
 	public int insertGroup(ProdSFGroup group);
