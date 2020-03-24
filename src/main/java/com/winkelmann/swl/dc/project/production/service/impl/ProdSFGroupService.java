@@ -35,13 +35,6 @@ public class ProdSFGroupService implements IProdSFGroupService
 	{
 		return groupMapper.selectGroupById(id);
 	}
-	
-	// 根据车间Id查询班组
-	@Override
-	public List<ProdSFGroup> selectGroupByDeptId(Long deptId)
-	{
-		return groupMapper.selectGroupByDeptId(deptId);
-	}
 
 	// 新增车间班组
 	@Override

@@ -61,15 +61,6 @@ public class ProdSFGroupController extends BaseController
 	}
 	
 	/**
-	 * 根据车间Id获取班组
-	 */
-	@GetMapping("/getgroupbydeptid/{deptId}")
-	public AjaxResult getGroupByDeptId(@PathVariable Long deptId)
-	{
-		return AjaxResult.success(groupService.selectGroupByDeptId(deptId));
-	}
-	
-	/**
 	 * 新增班组
 	 */
 	@Log(title = "班组管理", businessType = BusinessType.INSERT)

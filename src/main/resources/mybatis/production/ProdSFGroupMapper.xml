@@ -32,11 +32,6 @@
 		</where>
 	</select>
 	
-	<select id="selectGroupByDeptId" parameterType="Long" resultMap="ProdSFGroupResult">
-		<include refid="selectGroupVo" />
-		where sfg.dept_id = #{deptId}
-	</select>
-	
 	<select id="selectGroupById" parameterType="Long" resultMap="ProdSFGroupResult">
 		<include refid="selectGroupVo" />
 		where sfg.id = #{id}
