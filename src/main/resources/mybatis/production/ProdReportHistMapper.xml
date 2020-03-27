@@ -119,10 +119,10 @@
 			<if test="op != null and op != ''">op = #{op},</if>
 			<if test="operator != null and operator != ''">operator = #{operator},</if>
 			<if test="shift != null and shift != ''">shift = #{shift},</if>
-			<if test="rejectReason != null and rejectReason != ''">reject_reason = #{rejectReason},</if>
+			<if test="rejectReason != null">reject_reason = #{rejectReason},</if>
 			<if test="qtyCompleted != null and qtyCompleted != 0">qty_completed = #{qtyCompleted},</if>
-			<if test="qtyRejected != null and qtyRejected != 0">qty_rejected = #{qtyRejected},</if>
-			<if test="qtyScrapped != null and qtyScrapped != 0">qty_scrapped = #{qtyScrapped},</if>
+			<if test="qtyRejected != null">qty_rejected = #{qtyRejected},</if>
+			<if test="qtyScrapped != null">qty_scrapped = #{qtyScrapped},</if>
 			<if test="qtyAccepted != null and qtyAccepted != ''">qty_accepted = #{qtyAccepted},</if>
 			<if test="ppm != null">ppm = #{ppm},</if>
 			<if test="ftq != null">ftq = #{ftq},</if>
